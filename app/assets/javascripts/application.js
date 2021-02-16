@@ -10,10 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> website_conversion
+>>>>>>> main
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> website_conversion
+>>>>>>> main
 //= require jquery
 //= require jquery.slick
 //= require jquery.sliders
@@ -28,3 +42,10 @@ $('.carousel-inner').slick({
     autoplay: true,
     autoplaySpeed: 2000,
   });
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> website_conversion
+=======
+>>>>>>> website_conversion
+>>>>>>> main
