@@ -40,9 +40,9 @@
                             SERVICES
                         </a>
                         <ul class="dropdown-menu">
-                            <li><%= link_to 'Residential View', 'pages#residential' %></li>
-                            <li><%= link_to 'Commercial View', '#' %></li>
-                            <li><%= link_to 'Get a Quote', '#' %></li>
+                            <li><%= link_to 'Residential View', residential_path %></li>
+                            <li><%= link_to 'Commercial View', commercial_path %></li>
+                            <li><%= link_to 'Get a Quote', quote_path %></li>
                         </ul>
                     </li>
                     <li><!-- PORTFOLIO -->
@@ -91,7 +91,683 @@
 
 
 
+<!-- REVOLUTION SLIDER -->
+<div class="slider fullwidthbanner-container roundedcorners">
+    <!--
+        Navigation Styles:
+        
+            data-navigationStyle="" theme default navigation
+            
+            data-navigationStyle="preview1"
+            data-navigationStyle="preview2"
+            data-navigationStyle="preview3"
+            data-navigationStyle="preview4"
+            
+        Bottom Shadows
+            data-shadow="1"
+            data-shadow="2"
+            data-shadow="3"
+            
+        Slider Height (do not use on fullscreen mode)
+            data-height="300"
+            data-height="350"
+            data-height="400"
+            data-height="450"
+            data-height="500"
+            data-height="550"
+            data-height="600"
+            data-height="650"
+            data-height="700"
+            data-height="750"
+            data-height="800"
+    -->
+    <!--Chagned the slider speed in demo.revolution_slider.js line 54-->
+    <div class="fullwidthbanner" data-height="600" data-shadow="0" data-navigationStyle="preview2">
+        <ul class="hide">
+        
+            <!-- SLIDE 1 -->
+            <li data-transition="parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" data-title="Home" >
+                <!-- MAIN IMAGE -->
+                <img src="assets/images/slider/AdobeStock_53477661.jpeg" alt="cover image 1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                <div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
+
+                <div class="tp-caption font-roboto skewfromleft tp-resizeme"
+                    data-x="50"
+                    data-y="100" 
+                    data-speed="500"
+                    data-start="1500"
+                    data-easing="Cubic.easeOut"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 2; color:#fff; font-size:65px; line-height:85px; font-weight:bold; letter-spacing:0; text-shadow:none;">
+                        Welcome to <br />
+                        Rocket Elevators
+                </div>
+
+                <div class="tp-caption skewfromrightshort tp-resizeme"
+                    data-x="50"
+                    data-y="300" 
+                    data-speed="500"
+                    data-start="1000"
+                    data-easing="easeInCirc"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 3; font-size:20px; color:#fff; font-weight:300; text-shadow:none;">
+                        "Here we believe that the sky's the limit." <br />
+                </div>
+
+                <div class="tp-caption sfb tp-resizeme"
+                    data-x="50"
+                    data-y="410" 
+                    data-speed="500"
+                    data-start="1500"
+                    data-easing="Power3.easeIn"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 4; max-width: auto;">
+                        <a class="btn btn-primary btn-md" href="#services">OUR SERVICES &nbsp; <i class="fa fa-angle-right"></i></a>
+                </div>
+
+                <div class="tp-caption sfb tp-resizeme"
+                    data-x="250"
+                    data-y="410" 
+                    data-speed="500"
+                    data-start="1500"
+                    data-easing="Power3.easeInOut"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">
+                        <a class="btn btn-default btn-md" href="quote.html">GET A QUOTE &nbsp; <i class="fa fa-angle-right"></i></a>
+                </div>
+            </li>
+
+            <!-- SLIDE 2 -->
+            <li data-transition="parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" data-title="Residential" >
+                <!-- MAIN IMAGE -->
+                <img src="assets/images/slider/AdobeStock_72034307.jpeg" alt="cover image 2"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                
+                <div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
+
+                <div class="tp-caption font-roboto skewfromleft tp-resizeme"
+                    data-x="50"
+                    data-y="100" 
+                    data-speed="500"
+                    data-start="1500"
+                    data-easing="Cubic.easeOut"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 2; color:#fff; font-size:65px; line-height:85px; font-weight:bold; letter-spacing:0; text-shadow:none;">
+                        Residential Building <br />
+                        Service
+                </div>
+
+                <div class="tp-caption skewfromrightshort tp-resizeme"
+                    data-x="50"
+                    data-y="300" 
+                    data-speed="500"
+                    data-start="1000"
+                    data-easing="easeInCirc"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 3; font-size:20px; color:#fff; font-weight:300; text-shadow:none;">
+                        Our team is the best in the field, <br />
+                        when it comes to matching the design with your vision.
+                </div>
+
+                <div class="tp-caption sfb tp-resizeme"
+                    data-x="50"
+                    data-y="410" 
+                    data-speed="500"
+                    data-start="1500"
+                    data-easing="Power3.easeIn"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 4; max-width: auto;">
+                        <a class="btn btn-primary btn-md" href="residential.html">Residential &nbsp; <i class="fa fa-angle-right"></i></a>
+                </div>
+
+            </li>
+
+            <!-- SLIDE 3 -->
+            <li data-transition="parallaxtotop" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" data-title="Corporate" >
+                <!-- MAIN IMAGE -->
+                <img src="assets/images/slider/AdobeStock_179073967.jpeg" alt="cover image 3"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                <div class="overlay dark-4"><!-- dark overlay [0 to 9 opacity] --></div>
+
+                <div class="tp-caption font-roboto skewfromleft tp-resizeme"
+                    data-x="50"
+                    data-y="100" 
+                    data-speed="500"
+                    data-start="1500"
+                    data-easing="Cubic.easeOut"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 2; color:#fff; font-size:65px; line-height:85px; font-weight:bold; letter-spacing:0; text-shadow:none;">
+                        Corporate Building<br />
+                        Service
+                </div>
+
+                <div class="tp-caption skewfromrightshort tp-resizeme"
+                    data-x="50"
+                    data-y="300" 
+                    data-speed="500"
+                    data-start="1000"
+                    data-easing="easeInCirc"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 3; font-size:20px; color:#fff; font-weight:300; text-shadow:none;">
+                        We are unrivaled in our abilty to provide exceptional <br />
+                        service to our clients.
+                </div>
+
+                <div class="tp-caption sfb tp-resizeme"
+                    data-x="50"
+                    data-y="410" 
+                    data-speed="500"
+                    data-start="1500"
+                    data-easing="Power3.easeIn"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="1"
+                    data-endelementdelay="0.1"
+                    data-endspeed="500"
+                    style="z-index: 4; max-width: auto;">
+                        <a class="btn btn-primary btnmd" href="commercial.html">Corporate &nbsp; <i class="fa fa-angle-right"></i></a>
+                </div>
+
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+<!-- /REVOLUTION SLIDER -->
+
+
 <hr class="m-0" /><!-- 1px line separator -->
+
+
+<!-- BUTTON CALLOUT -->
+<a href="#contact" class="btn btn-xlg btn-primary fs-20 fullwidth m-0 rad-0 p-40">
+    <span class="font-lato fs-30">
+        Did Rocket Elevators convince you? 
+        <strong>Contact us &raquo;</strong>
+    </span>
+</a>
+<!-- /BUTTON CALLOUT -->
+
+
+
+<!-- Services -->
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img style="height: 250px;" class="img-fluid" src="assets/images/award.jpg" alt="img" />
+                <h3 class="mt-10">Awards and Major Projects</h3>
+                <p>Over the years, the company has won several awards and completed multiple projects.</p>
+                <a href="#portfolio" class="btn btn-red">MORE INFO</a>
+            </div>
+
+            <div class="col-sm-4">
+                <img style="height: 250px;" class="img-fluid" src="assets/images/residential-building.jpg" alt="img" />
+                <h3 class="mt-10">Residential Buildings</h3>
+                <p>The Residential domain is one of two major focuses.</p>
+                <a href="residential.html" class="btn btn-red">MORE INFO</a>
+            </div>
+
+            <div class="col-sm-4">
+                <img style="height: 250px;" class="img-fluid" src="assets/images/corporate-building.jpg" alt="img" />
+                <h3 class="mt-10">Commercial Buildings</h3>
+                <p>Elevators for corporate buildings is the second major focus for the company.</p>
+                <a href="commercial.html" class="btn btn-red">MORE INFO</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- /Services -->
+
+
+
+
+<!-- Parallax -->
+<section class="parallax parallax-1" style="background-image: url('assets/images/AdobeStock_130711085.jpeg');">
+    <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
+
+    <div class="container">
+
+        <div class="text-center">
+            <h2 class="fs-40 fw-300">Rocket Elevators has been in business since 1976 </h2>
+            <a class="btn btn-default btnmd" href="quote.html">GET A QUOTE <i class="fa fa-angle-right"></i></a> 
+            &nbsp; OR &nbsp; 
+            <a class="btn btn-primary btnmd" href="#contact">CONTACT US <i class="fa fa-angle-right"></i></a>
+        </div>
+
+    </div>
+</section>
+<!-- /Parallax -->
+
+
+
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <div class="container">
+
+        <div class="heading-title heading-dotted text-center">
+            <h2>Portfolio</h2>
+        </div>
+
+        <div class="text-center">
+            <ul class="nav nav-pills mix-filter mb-60">
+                <li data-filter="all" class="filter active"><a href="#">All</a></li>
+                <li data-filter="awards" class="filter"><a href="#">Awards</a></li>
+                <li data-filter="residential" class="filter"><a href="#">Residential</a></li>
+                <li data-filter="commercial" class="filter"><a href="#">Commercial</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="portfolio" class="portfolio-nogutter">
+
+            <div class="row mix-grid">
+
+                <div class="col-md-3 col-sm-3 mix awards"><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/Ellies-Winners-202010-1024x1024.png" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/Ellies-Winners-202010-1024x1024.png" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Awards</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix commercial"><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/microsoft.jpg" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/microsoft.jpg" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Commercial Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix awards"><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/Elevator-Awards-2018.png" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/Elevator-Awards-2018.png" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Awards</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix commercial"><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/holidayinn-building.jpg" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/holidayinn-building.jpg" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Commercial Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix residential"><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/resi3.jpg" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/resi3.jpg" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Resedential Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix awards"><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/POY_InclinedElev_19-2-300x225.png" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/POY_InclinedElev_19-2-300x225.png" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Awards</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix commercial"><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/videotron-building.png" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/videotron-building.png" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Commercial Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix residential "><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/resi1.jpg" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/resi1.jpg" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Residential Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix commercial "><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/cbc-building.png" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/cbc-building.png" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Commercial Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix commercial "><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/Bell-building.png" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/Bell-building.png" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Commercial Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix residential "><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/resi2.jpeg" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/resi2.jpeg" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Residential Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+
+                <div class="col-md-3 col-sm-3 mix commercial "><!-- item -->
+
+                    <div class="item-box">
+                        <figure>
+                            <span class="item-hover">
+                                <span class="overlay dark-5"></span>
+                                <span class="inner">
+
+                                    <!-- lightbox -->
+                                    <a class="ico-rounded lightbox" href="assets/images/portfolio/marriott.jpeg" data-plugin-options='{"type":"image"}'>
+                                        <span class="fa fa-plus fs-20"></span>
+                                    </a>
+
+                                </span>
+                            </span>
+
+                            <img class="img-fluid" src="assets/images/portfolio/marriott.jpeg" width="600" height="399" alt="">
+                        </figure>
+
+                        <div class="item-box-desc">
+                            <h3>Commercial Project</h3>
+                            <ul class="list-inline categories m-0">
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div><!-- /item -->
+
+            </div>
+
+
+    </div>
+</section>
+<!-- /PORTFOLIO -->
 
 
 
@@ -103,10 +779,10 @@
 <section id="team" class="section-xs dark">
 <div class="container">
 
-    <div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
+    <div class="carousel-inner" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
         <div id="CEO" class="testimonial">
             <figure>
-                <img class="rounded" src="assets/images/testimonial/CEO.PNG" alt="CEO" />
+                <%= image_tag("testimonial/CEO.PNG", alt: "CEO", class: "img-responsive") %>                
             </figure>
             <div class="testimonial-content p-0">
                 <p class="lead">CEO of Rocket Elevators</p>
@@ -118,7 +794,7 @@
         </div>
         <div id="employee" class="testimonial">
             <figure>
-                <img class="rounded" src="assets/images/testimonial/employee-of-the-month.PNG" alt="Employee of the Month" />
+                <%= image_tag("testimonial/employee-of-the-month.PNG", alt: "Employee of the Month", class: "img-responsive") %>                
             </figure>
             <div class="testimonial-content p-0">
                 <p class="lead">Full-Stack Software Developer</p>
