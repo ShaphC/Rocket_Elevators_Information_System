@@ -1,0 +1,334 @@
+<div id="wrapper">
+
+<!-- 
+    AVAILABLE HEADER CLASSES
+
+    Default nav height: 96px
+    .header-md 		= 70px nav height
+    .header-sm 		= 60px nav height
+
+    .b-0 		= remove bottom border (only with transparent use)
+    .transparent	= transparent header
+    .translucent	= translucent header
+    .sticky			= sticky header
+    .static			= static header
+    .dark			= dark header
+    .bottom			= header on bottom
+    
+    shadow-before-1 = shadow 1 header top
+    shadow-after-1 	= shadow 1 header bottom
+    shadow-before-2 = shadow 2 header top
+    shadow-after-2 	= shadow 2 header bottom
+    shadow-before-3 = shadow 3 header top
+    shadow-after-3 	= shadow 3 header bottom
+
+    .clearfix		= required for mobile menu, do not remove!
+
+    Example Usage:  class="clearfix sticky header-sm transparent b-0"
+-->
+<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+    <!-- TOP NAV -->
+    <header id="topNav">
+        <div class="container">
+
+            <!-- Mobile Menu Button -->
+            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+            <a class="logo float-left scrollTo" href="#top">
+                <img src="assets/images/R2.png" alt="" />
+            </a>
+
+            <!-- 
+                Top Nav 
+                
+                AVAILABLE CLASSES:
+                submenu-dark = dark sub menu
+            -->
+            <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+                <nav class="nav-main">
+
+                    <!-- 
+                        .nav-onepage
+                        Required for onepage navigation links
+                        
+                        Add .external for an external link!
+                    -->
+                    <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+                        <li class="active"><!-- HOME -->
+                            <a id="home-nav" href="index.html">
+                                HOME
+                            </a>
+                        </li>
+                        <li><!-- SERVICES -->
+                            <a id="services-nav" href="index.html#services" class="dropdown-toggle">
+                                SERVICES
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="residential.html">Residential View</a></li>
+                                <li><a href="commercial.html">Commercial View</a></li>
+                                <li><a href="quote.html">Get a Quote</a></li>
+                            </ul>
+                        </li>
+                        <li><!-- PORTFOLIO -->
+                            <a id="portfolio-nav" href="index.html#portfolio">
+                                PORTFOLIO
+                            </a>
+                        </li>
+                        <li><!-- NEWS -->
+                            <a id="news-nav" href="index.html#news">
+                                NEWS
+                            </a>
+                        </li>
+                        <li><!-- CLIENTS -->
+                            <a id="clients-nav" href="index.html#clients">
+                                CLIENTS
+                            </a>
+                        </li>
+                        <li><!-- CONTACT -->
+                            <a id="contact-nav" href="index.html#contact">
+                                CONTACT
+                            </a>
+                        </li>
+                        <li><!-- LOGIN -->
+                        <a id="login-nav" href="#">
+                            LOGIN
+                        </a>
+                    </li>
+                    <li><!-- ADMIN -->
+                        <a id="admin-nav" href="#">
+                            ADMIN
+                        </a>
+                    </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+        </div>
+    </header>
+    <!-- /Top Nav -->
+
+</div>
+
+
+<!-- BUTTON CALLOUT -->
+<a href="#" class="btn btn-lg btn-primary fs-20 fullwidth m-0 rad-0 p-40">
+    <span class="font-lato fs-30">
+        <strong>Residential Services</strong> 
+    </span>
+</a>
+<!-- /BUTTON CALLOUT -->
+
+
+<!-- -->
+<section>
+    <div class="container">
+        <!-- -->
+        <article class="row">
+            <div class="col-md-6">
+                <!-- OWL SLIDER -->
+                <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"items": 1, "autoHeight": true, "navigation": true, "pagination": true, "transitionStyle":"backSlide", "progressBar":"true"}'>
+                    <div>
+                        <img class="img-fluid" src="assets/images/AdobeStock_33298664.jpeg" alt="">
+                    </div>
+                    <div>
+                        <img class="img-fluid" src="assets/images/repair.jpg" alt="">
+                    </div>
+                    <div>
+                        <img style="height: 350px; width: 700px;" class="img-fluid" src="assets/images/inhome.jpg" alt="">
+                    </div>
+                </div>
+                <!-- /OWL SLIDER -->
+            </div>
+            <div class="col-md-6">
+                <h3>Areas of Expertise</h3>
+                <p>
+                    Design <br>
+                    We can help to find the style that best suits your building.
+                </p><br>
+                
+                <p>
+                    Maintenance and Repair <br>
+                    We provide maintenance and repair for all types of elevators.
+                </p><br>
+                
+                <p>
+                    In-Home Installation <br>
+                    "We're also able to do in home elevators."
+                </p><br>
+            </div>
+        </article>
+        <!-- / -->
+
+    </div>
+</section>
+<!-- / -->
+
+
+
+
+<!-- CALLOUT -->
+<div class="alert alternate bordered-bottom m-0">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-9 col-sm-12"><!-- left text -->
+                <h3><strong>OVER <span class="countTo fw-400" data-speed="3000">8100</span> CLIENTS TRUST OUR SERVICES</strong></h3>
+                <p class="font-lato fw-300 fs-20 mb-0">
+                    We truly care about our users and our product.
+                </p>
+            </div><!-- /left text -->
+
+            
+            <div class="col-md-3 col-sm-12 text-right"><!-- right btn -->
+                <a href="#regulars" class="btn btn-3d btn-red btn-lg fs-16">OUR REGULARS</a>
+            </div><!-- /right btn -->
+
+        </div>
+
+    </div>
+</div>
+<!-- /CALLOUT -->
+
+
+
+<!--
+    .box-pink
+    .box-blue
+    .box-orange
+    .box-yellow
+    .box-purple
+    .box-red
+    .box-brown
+    .box-green
+    .box-black
+    .box-gray
+    .box-teal
+-->
+<div class="row box-gradient box-red">
+    <div class="col-6 col-sm-4">
+        <i class="fa fa-cog fa-4x"></i>
+        <h2 class="countTo font-raleway" data-speed="3000">24567</h2>
+        <p>ELEVATORS INSTALLED</p>
+    </div>
+
+    <div class="col-6 col-sm-4">
+        <i class="fa fa-smile-o fa-4x"></i>
+        <h2 class="countTo font-raleway" data-speed="3000">1033</h2>
+        <p>COMPLETED PROJECTS</p>
+    </div>
+
+    <div class="col-6 col-sm-4">
+        <i class="fa fa-child fa-4x"></i>
+        <h2 class="countTo font-raleway" data-speed="3000">8165</h2>
+        <p>SATISFIED CUSTOMERS</p>
+    </div>
+</div>
+
+
+
+
+<!-- Parallax -->
+<section class="parallax parallax-1" style="background-image: url('assets/images/AdobeStock_170843598.jpeg');">
+    <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
+
+    <div class="container">
+
+        <div class="text-center">
+            <h2 class="fs-40 fw-300">Get an estimate today.</h2>
+            <a class="btn btn-primary btn-lg" href="quote.html">GET A QUOTE <i class="fa fa-angle-right"></i></a>
+        </div>
+
+    </div>
+</section>
+<!-- /Parallax -->
+
+
+
+<!-- Clients -->
+<section id="regulars" class="alternate">
+    <div class="container">
+
+        <div class="heading-title heading-dotted text-center">
+            <h2>Regular Residential Customers</h2>
+        </div>
+
+        <ul class="row clients-dotted list-inline">
+            <li class="col-md-4 col-sm-3 col-6">
+                <a>
+                    <img class="img-fluid" src="assets/images/logos/concordia_logo.png" alt="concordia_logo" />
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-3 col-6">
+                <a>
+                    <img class="img-fluid" src="assets/images/logos/mcgill_logo.png" alt="mcgill_logo" />
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-3 col-6">
+                <a>
+                    <img class="img-fluid" src="assets/images/logos/muhc_logo.png" alt="muhc_logo" />
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</section>
+<!-- /Clients -->
+
+
+
+
+
+
+<!-- FOOTER -->
+<footer id="footer">
+    <div class="container">
+
+
+        <div class="row">
+
+            <!-- col #1 -->
+            <div class="col-md-8">
+
+                <h3 class="letter-spacing-1">WHY US?</h3>
+
+                <!-- Small Description -->
+                <p>
+                    We have the conviction that we create the most innovative and reliable products on the market. 
+                    Contact us today for any questions you might have.
+                </p>
+                <h2>(418) 555-1234</h2>
+            </div>
+            <!-- /col #1 -->
+
+
+        </div>
+
+
+    </div>
+
+    <div class="copyright">
+        <div class="container">
+            <ul class="float-right m-0 list-inline mobile-block">
+                <li><a href="#">Terms &amp; Conditions</a></li>
+                <li>&bull;</li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+            &copy; All Rights Reserved, Company LTD
+        </div>
+    </div>
+
+</footer>
+<!-- /FOOTER -->
+
+</div>
+<!-- /wrapper -->
+
+
+<!-- SCROLL TO TOP -->
+<a href="#" id="toTop"></a>

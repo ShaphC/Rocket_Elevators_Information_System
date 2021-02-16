@@ -6,6 +6,9 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -14,6 +17,8 @@
   </head>
   
   <body>
+    <div class="container-fluid">
       <%= yield %>
+    </div>
   </body>
 </html>

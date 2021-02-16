@@ -6,6 +6,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+//Quotes page
+body {
+	color:blue;
+}
+
+
+#center {
+	text-align: center;
+}
+
+#underline {
+	text-decoration:underline;
+}
+
+h1 {
+	text-align: center;
+	font-size: 40px;
+	color: black;
+}
+
+div.solid {
+	border-style:solid;
+	border-radius: 20px;
+	background-color: white;
+	color: blue;
+	padding: 10px;
+}				
+
+.inline {
+	display:inline;
+}
+
+
 /** Red	#A94545
  **************************************************************** **/
  ::selection {

@@ -10,8 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery.slick
 //= require jquery.sliders
 //= require jquery-ui
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$('.carousel-inner').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  });

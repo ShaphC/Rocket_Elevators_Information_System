@@ -40,9 +40,9 @@
                             SERVICES
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="residential.html">Residential View</a></li>
-                            <li><a href="commercial.html">Commercial View</a></li>
-                            <li><a href="quote.html">Get a Quote</a></li>
+                            <li><%= link_to 'Residential View', 'pages#residential' %></li>
+                            <li><%= link_to 'Commercial View', '#' %></li>
+                            <li><%= link_to 'Get a Quote', '#' %></li>
                         </ul>
                     </li>
                     <li><!-- PORTFOLIO -->
@@ -63,6 +63,16 @@
                     <li><!-- CONTACT -->
                         <a id="contact-nav" href="#contact">
                             CONTACT
+                        </a>
+                    </li>
+                    <li><!-- LOGIN -->
+                        <a id="login-nav" href="#">
+                            LOGIN
+                        </a>
+                    </li>
+                    <li><!-- ADMIN -->
+                        <a id="admin-nav" href="#">
+                            ADMIN
                         </a>
                     </li>
                 </ul>
@@ -136,29 +146,10 @@
         <h2>Recent News</h2>
     </div>
 
-    <!-- 
-        controlls-over		= navigation buttons over the image 
-        buttons-autohide 	= navigation buttons visible on mouse hover only
-        
-        data-plugin-options:
-            "singleItem": true
-            "autoPlay": true (or ms. eg: 4000)
-            "navigation": true
-            "pagination": true
-            "items": "4"
-
-        owl-carousel item paddings
-            .owl-padding-0
-            .owl-padding-3
-            .owl-padding-6
-            .owl-padding-10
-            .owl-padding-15
-            .owl-padding-20
-    -->
-    <div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
+    <div class="carousel-inner" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
         <div class="img-hover">
             <a target="_blank" href="https://www.independent.co.uk/news/world/americas/man-saved-woman-s-life-pushing-her-out-falling-elevator-block-flats-manhattan-a6793816.html">
-                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/life_saved.png" alt="falling">
+            <%= image_tag("news/life_saved.png", alt: "falling", class: "img-responsive") %>                
             </a>
 
             <h4 class="text-left mt-20"><a target="_blank" href="https://www.independent.co.uk/news/world/americas/man-saved-woman-s-life-pushing-her-out-falling-elevator-block-flats-manhattan-a6793816.html">Falling Elevator</a></h4>
@@ -172,7 +163,8 @@
         </div>
         <div class="img-hover">
             <a target="_blank" href="https://elevatortoday.com/2014/09/14/dirtiest-place-hospitals-elevator-buttons/">
-                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/dirtiest.jpg" alt="new normal">
+                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/" alt="new normal">
+                <%= image_tag("news/dirtiest.jpg", alt: "falling", class: "img-responsive") %>                
             </a>
 
             <h4 class="text-left mt-20"><a target="_blank" href="https://elevatortoday.com/2014/09/14/dirtiest-place-hospitals-elevator-buttons/">Dirty Elevator Buttons</a></h4>
@@ -268,52 +260,52 @@
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/mcgill_logo.png" alt="mcgill_logo" />
+                <%= image_tag("logos/mcgill_logo.png", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/microsoft_logo.png" alt="microsoft_logo" />
+                <%= image_tag("logos/microsoft_logo.png", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/muhc_logo.png" alt="muhc_logo" />
+                <%= image_tag("logos/muhc_logo.png", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/Walmart_logo.jpg" alt="Walmart_logo" />
+                <%= image_tag("logos/Walmart_logo.jpg", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/bmo_logo.png" alt="bmo_logo" />
+                <%= image_tag("logos/bmo_logo.png", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/cbc_logo.jpg" alt="cbc_logo" />
+                <%= image_tag("logos/cbc_logo.jpg", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/bell_logo.png" alt="bell_logo" />
+                <%= image_tag("logos/bell_logo.png", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/videotron_logo.jpg" alt="videotron_logo" />
+                <%= image_tag("logos/videotron_logo.jpg", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img style="height: 200px;" class="img-fluid" src="assets/images/logos/marriott_logo.png" alt="marriott_logo" />
+                <%= image_tag("logos/marriott_logo.png", width: 200) %>
             </a>
         </li>
         <li class="col-md-3 col-sm-3 col-6">
             <a >
-                <img class="img-fluid" src="assets/images/logos/h_inn_logo.png" alt="h_inn_logo" />
+                <%= image_tag("logos/h_inn_logo.png", width: 200) %>
             </a>
         </li>						
     </ul>
