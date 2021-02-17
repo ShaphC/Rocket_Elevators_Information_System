@@ -10,7 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require owl.carousel
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require bootstrap.min
+//= require jquery.slick
+//= require jquery.sliders
+//= require jquery-ui
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+$(".owl-carousel").owlCarousel();
