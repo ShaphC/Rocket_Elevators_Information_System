@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: Pa$$w0rd!
+  password: password
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -26,10 +26,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-<<<<<<< HEAD
-=======
-
->>>>>>> e9758382831cd3ee1c69f14b6495cecdcbb62aae
   database: myapp_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
