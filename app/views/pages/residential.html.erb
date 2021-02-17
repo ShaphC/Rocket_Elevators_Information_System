@@ -1,0 +1,164 @@
+<!-- BUTTON CALLOUT -->
+<a href="#" class="btn btn-lg btn-primary fs-20 fullwidth m-0 rad-0 p-40">
+    <span class="font-lato fs-30">
+        <strong>Residential Services</strong> 
+    </span>
+</a>
+<!-- /BUTTON CALLOUT -->
+
+
+<!-- -->
+<section>
+    <div class="container">
+        <!-- -->
+        <article class="row">
+            <div class="col-md-6">
+                <!-- OWL SLIDER -->
+                <div class="owl-carousel buttons-autohide controlls-over m-0" data-plugin-options='{"items": 1, "autoHeight": true, "navigation": true, "pagination": true, "transitionStyle":"backSlide", "progressBar":"true"}'>
+                    <div>
+                        <%= image_tag("AdobeStock_33298664.jpeg", alt: "", class: "img-fluid") %>                
+                    </div>
+                    <div>
+                        <%= image_tag("repair.jpg", alt: "", class: "img-fluid") %>
+                    </div>
+                    <div>
+                        <%= image_tag("inhome.jpg", alt: "", class: "img-fluid", height:350, width:700) %>
+                    </div>
+                </div>
+                <!-- /OWL SLIDER -->
+            </div>
+            <div class="col-md-6">
+                <h3>Areas of Expertise</h3>
+                <p>
+                    Design <br>
+                    We can help to find the style that best suits your building.
+                </p><br>
+                
+                <p>
+                    Maintenance and Repair <br>
+                    We provide maintenance and repair for all types of elevators.
+                </p><br>
+                
+                <p>
+                    In-Home Installation <br>
+                    "We're also able to do in home elevators."
+                </p><br>
+            </div>
+        </article>
+        <!-- / -->
+
+    </div>
+</section>
+<!-- / -->
+
+
+
+
+<!-- CALLOUT -->
+<div class="alert alternate bordered-bottom m-0">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-9 col-sm-12"><!-- left text -->
+                <h3><strong>OVER <span class="countTo fw-400" data-speed="3000">8100</span> CLIENTS TRUST OUR SERVICES</strong></h3>
+                <p class="font-lato fw-300 fs-20 mb-0">
+                    We truly care about our users and our product.
+                </p>
+            </div><!-- /left text -->
+
+            
+            <div class="col-md-3 col-sm-12 text-right"><!-- right btn -->
+                <a href="#regulars" class="btn btn-3d btn-red btn-lg fs-16">OUR REGULARS</a>
+            </div><!-- /right btn -->
+
+        </div>
+
+    </div>
+</div>
+<!-- /CALLOUT -->
+
+
+
+<!--
+    .box-pink
+    .box-blue
+    .box-orange
+    .box-yellow
+    .box-purple
+    .box-red
+    .box-brown
+    .box-green
+    .box-black
+    .box-gray
+    .box-teal
+-->
+<div class="row box-gradient box-red">
+    <div class="col-6 col-sm-4">
+        <i class="fa fa-cog fa-4x"></i>
+        <h2 class="countTo font-raleway" data-speed="3000">24567</h2>
+        <p>ELEVATORS INSTALLED</p>
+    </div>
+
+    <div class="col-6 col-sm-4">
+        <i class="fa fa-smile-o fa-4x"></i>
+        <h2 class="countTo font-raleway" data-speed="3000">1033</h2>
+        <p>COMPLETED PROJECTS</p>
+    </div>
+
+    <div class="col-6 col-sm-4">
+        <i class="fa fa-child fa-4x"></i>
+        <h2 class="countTo font-raleway" data-speed="3000">8165</h2>
+        <p>SATISFIED CUSTOMERS</p>
+    </div>
+</div>
+
+
+
+
+<!-- Parallax -->
+<section class="parallax parallax-1" style="background-image: url(<%= image_path 'AdobeStock_170843598.jpeg' %>);">
+    <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
+
+    <div class="container">
+
+        <div class="text-center">
+            <h2 class="fs-40 fw-300">Get an estimate today.</h2>
+            <a class="btn btn-primary btn-lg" href="quote.html">GET A QUOTE <i class="fa fa-angle-right"></i></a>
+        </div>
+
+    </div>
+</section>
+<!-- /Parallax -->
+
+
+
+<!-- Clients -->
+<section id="regulars" class="alternate">
+    <div class="container">
+
+        <div class="heading-title heading-dotted text-center">
+            <h2>Regular Residential Customers</h2>
+        </div>
+
+        <ul class="row clients-dotted list-inline">
+            <li class="col-md-4 col-sm-3 col-6">
+                <a>
+                    <%= image_tag("logos/concordia_logo.png", alt: "concordia_logo", class: "img-fluid") %>                
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-3 col-6">
+                <a>
+                    <%= image_tag("logos/mcgill_logo.png", alt: "mcgill_logo", class: "img-fluid") %>                
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-3 col-6">
+                <a>
+                    <%= image_tag("logos/muhc_logo.png", alt: "muhc_logo", class: "img-fluid") %>                
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</section>
+<!-- /Clients -->
