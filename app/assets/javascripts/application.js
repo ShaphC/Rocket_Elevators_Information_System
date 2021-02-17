@@ -20,9 +20,7 @@
 //= require turbolinks
 //= require_tree .
 
-$('.carousel-inner').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-  });
+$('.owl-carousel').owlCarousel({
+  autoPlay: 3000,
+  item: 6
+});

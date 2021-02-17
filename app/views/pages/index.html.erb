@@ -1,100 +1,3 @@
-<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
-
-<!-- TOP NAV -->
-<header id="topNav">
-    <div class="container">
-
-        <!-- Mobile Menu Button -->
-        <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-            <i class="fa fa-bars"></i>
-        </button>
-
-        <!-- Logo -->
-        <a class="logo float-left scrollTo" href="#top">
-
-
-            <img src="assets/images/R2.png" alt="" />
-        </a>
-
-        <!-- 
-            Top Nav 
-            
-            AVAILABLE CLASSES:
-            submenu-dark = dark sub menu
-        -->
-        <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
-            <nav class="nav-main">
-
-                <!-- 
-                    .nav-onepage
-                    Required for onepage navigation links
-                    
-                    Add .external for an external link!
-                -->
-                <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-                    <li class="active"><!-- HOME -->
-                        <a id="home-nav" href="#top">
-                            HOME
-                        </a>
-                    </li>
-                    <li><!-- SERVICES -->
-                        <a id="services-nav" href="#services" class="dropdown-toggle">
-                            SERVICES
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><%= link_to 'Residential View', residential_path %></li>
-                            <li><%= link_to 'Commercial View', commercial_path %></li>
-                            <li><%= link_to 'Get a Quote', quote_path %></li>
-                        </ul>
-                    </li>
-                    <li><!-- PORTFOLIO -->
-                        <a id="portfolio-nav" href="#portfolio">
-                            PORTFOLIO
-                        </a>
-                    </li>
-                    <li><!-- NEWS -->
-                        <a id="news-nav" href="#news">
-                            NEWS
-                        </a>
-                    </li>
-                    <li><!-- CLIENTS -->
-                        <a id="clients-nav" href="#clients">
-                            CLIENTS
-                        </a>
-                    </li>
-                    <li><!-- CONTACT -->
-                        <a id="contact-nav" href="#contact">
-                            CONTACT
-                        </a>
-                    </li>
-                    <li><!-- LOGIN -->
-                        <a id="login-nav" href="#">
-                            LOGIN
-                        </a>
-                    </li>
-                    <li><!-- ADMIN -->
-                        <a id="admin-nav" href="#">
-                            ADMIN
-                        </a>
-                    </li>
-                </ul>
-
-            </nav>
-        </div>
-
-    </div>
-</header>
-<!-- /Top Nav -->
-
-</div>
-
-
-
-
-
-
-<hr class="m-0" /><!-- 1px line separator -->
-
 
 <!-- REVOLUTION SLIDER -->
 <div class="slider fullwidthbanner-container roundedcorners">
@@ -363,7 +266,7 @@
 
 
 <!-- Parallax -->
-<section class="parallax parallax-1" background-image: image_url('AdobeStock_130711085.jpeg')>
+<section class="parallax parallax-1" style="background-image: url(<%= image_path 'AdobeStock_130711085.jpeg' %>);" >
     <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
 
     <div class="container">
@@ -422,6 +325,7 @@
                             </span>
 
                             <img class="img-fluid" src="assets/images/portfolio/Ellies-Winners-202010-1024x1024.png" width="600" height="399" alt="">
+                            
                         </figure>
 
                         <div class="item-box-desc">
@@ -512,6 +416,7 @@
                             </span>
 
                             <img class="img-fluid" src="assets/images/portfolio/holidayinn-building.jpg" width="600" height="399" alt="">
+
                         </figure>
 
                         <div class="item-box-desc">
@@ -779,42 +684,36 @@
 
 <!-- Testimonials -->
 <section id="team" class="section-xs dark">
-<div class="container">
+    <div class="container">
 
-    <div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
-        <div id="CEO" class="testimonial">
-            <figure>
-                <img class="rounded" src="assets/images/testimonial/CEO.PNG" alt="CEO" />
-    <div class="carousel-inner" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
-        <div id="CEO" class="testimonial">
-            <figure>
-                <%= image_tag("testimonial/CEO.PNG", alt: "CEO", class: "img-responsive") %>                
-            </figure>
-            <div class="testimonial-content p-0">
-                <p class="lead">CEO of Rocket Elevators</p>
-                <cite>
-                    Patrick THibault
-                    <span>CEO</span>
-                </cite>
+        <div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
+            <div id="CEO" class="testimonial">
+                <figure>
+                    <%= image_tag("testimonial/CEO.PNG", alt: "CEO", class: "img-responsive") %>                
+                </figure>
+                <div class="testimonial-content p-0">
+                    <p class="lead">CEO of Rocket Elevators</p>
+                    <cite>
+                        Patrick THibault
+                        <span>CEO</span>
+                    </cite>
+                </div>
+            </div>
+            <div id="employee" class="testimonial">
+                <figure>
+                    <%= image_tag("testimonial/employee-of-the-month.PNG", alt: "Employee of the Month", class: "img-responsive") %>                
+                </figure>
+                <div class="testimonial-content p-0">
+                    <p class="lead">Full-Stack Software Developer</p>
+                    <cite>
+                        Shaphan Charles
+                        <span>Employee of the Month</span>
+                    </cite>
+                </div>
             </div>
         </div>
-        <div id="employee" class="testimonial">
-            <figure>
-                <%= image_tag("testimonial/employee-of-the-month.PNG", alt: "Employee of the Month", class: "img-responsive") %>                
-                <img class="rounded" src="assets/images/testimonial/employee-of-the-month.PNG" alt="Employee of the Month" />
-                <%= image_tag("testimonial/employee-of-the-month.PNG", alt: "Employee of the Month", class: "img-responsive") %>                
-            </figure>
-            <div class="testimonial-content p-0">
-                <p class="lead">Full-Stack Software Developer</p>
-                <cite>
-                    Shaphan Charles
-                    <span>Employee of the Month</span>
-                </cite>
-            </div>
-        </div>
+
     </div>
-
-</div>
 </section>
 <!-- /Testimonials -->
 
@@ -830,10 +729,10 @@
         <h2>Recent News</h2>
     </div>
 
-    <div class="carousel-inner" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
+    <div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false}'>
         <div class="img-hover">
             <a target="_blank" href="https://www.independent.co.uk/news/world/americas/man-saved-woman-s-life-pushing-her-out-falling-elevator-block-flats-manhattan-a6793816.html">
-            <%= image_tag("news/life_saved.png", alt: "falling", class: "img-responsive") %>                
+                <%= image_tag "news/life_saved.png", :alt => "falling", :class => "img-responsive" %>   
             </a>
 
             <h4 class="text-left mt-20"><a target="_blank" href="https://www.independent.co.uk/news/world/americas/man-saved-woman-s-life-pushing-her-out-falling-elevator-block-flats-manhattan-a6793816.html">Falling Elevator</a></h4>
@@ -847,8 +746,7 @@
         </div>
         <div class="img-hover">
             <a target="_blank" href="https://elevatortoday.com/2014/09/14/dirtiest-place-hospitals-elevator-buttons/">
-                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/" alt="new normal">
-                <%= image_tag("news/dirtiest.jpg", alt: "falling", class: "img-responsive") %>                
+                <%= image_tag("news/dirtiest.jpg", :alt => "falling", :class => "img-responsive") %>                
             </a>
 
             <h4 class="text-left mt-20"><a target="_blank" href="https://elevatortoday.com/2014/09/14/dirtiest-place-hospitals-elevator-buttons/">Dirty Elevator Buttons</a></h4>
@@ -862,7 +760,7 @@
         </div>
         <div class="img-hover">
             <a target="_blank" href="https://www.ctvnews.ca/health/coronavirus/new-normal-elevators-moving-touchless-mobile-and-sideways-1.5045643">
-                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/touchless.jpg" alt="touchless">
+                <%= image_tag("news/touchless.jpg", :alt => "touchless", :class => "img-fluid") %>                
             </a>
 
             <h4 class="text-left mt-20"><a target="_blank" href="https://www.ctvnews.ca/health/coronavirus/new-normal-elevators-moving-touchless-mobile-and-sideways-1.5045643">New Normal</a></h4>
@@ -876,7 +774,7 @@
         </div>
         <div class="img-hover">
             <a target="_blank" href="https://www.independent.co.uk/news/world/americas/elevator-dog-video-rescue-leash-pomeranian-twitter-a9244431.html">
-                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/dog_rescue.png" alt="rescue">
+                <%= image_tag("news/dog_rescue.png", :alt => "rescue", :class => "img-fluid") %>                
             </a>
 
             <h4 class="text-left mt-20"><a target="_blank" href="https://www.independent.co.uk/news/world/americas/elevator-dog-video-rescue-leash-pomeranian-twitter-a9244431.html">Man rescues Dog</a></h4>
@@ -890,7 +788,7 @@
         </div>
         <div class="img-hover">
             <a target="_blank" href="https://elevatortoday.com/2013/04/19/the-worlds-most-unusual-elevators/">
-                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/unusual.jpg" alt="unusual">
+                <%= image_tag("news/unusual.jpg", :alt => "unusual", :class => "img-fluid") %>                
             </a>
             <h4 class="text-left mt-20"><a target="_blank" href="https://elevatortoday.com/2013/04/19/the-worlds-most-unusual-elevators/">Unusual Elevators</a></h4>
             <p class="text-left">"The world's most unusual elevators.<"/p>
@@ -903,7 +801,7 @@
         </div>
         <div class="img-hover">
             <a target="_blank" href="https://elevatortoday.com/2020/03/03/thyssenkrupp-sells-elevator-technology-business-for-e17-2-billion/">
-                <img style="height: 200px; width: 350px;" class="img-fluid" src="assets/images/news/thyssenkrupp-headquaters.jpg" alt="sold">
+                <%= image_tag("news/thyssenkrupp-headquaters.jpg", :alt => "sold", :class => "img-fluid") %>                
             </a>
             <h4 class="text-left mt-20"><a target="_blank" href="https://elevatortoday.com/2020/03/03/thyssenkrupp-sells-elevator-technology-business-for-e17-2-billion/">ThyssenKrupp for sale</a></h4>
             <p class="text-left">"ThyssenKrupp sells it's business for 17.2 billion euro."</p>
@@ -1179,54 +1077,3 @@
 </div>
 </section>
 <!-- /CONTACT -->
-
-
-
-
-<!-- FOOTER -->
-<footer id="footer">
-<div class="container">
-
-
-    <div class="row">
-
-        <!-- col #1 -->
-        <div class="col-md-8">
-
-            <h3 class="letter-spacing-1">WHY US?</h3>
-
-            <!-- Small Description -->
-            <p>
-                We have the conviction that we create the most innovative and reliable products on the market. 
-                Contact us today for any questions you might have.
-            </p>
-            <h2>(418) 555-1234</h2>
-        </div>
-        <!-- /col #1 -->
-
-
-    </div>
-
-
-</div>
-
-<div class="copyright">
-    <div class="container">
-        <ul class="float-right m-0 list-inline mobile-block">
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li>&bull;</li>
-            <li><a href="#">Privacy</a></li>
-        </ul>
-        &copy; All Rights Reserved, Company LTD
-    </div>
-</div>
-
-</footer>
-<!-- /FOOTER -->
-
-</div>
-<!-- /wrapper -->
-
-
-<!-- SCROLL TO TOP -->
-<a href="#" id="toTop"></a>

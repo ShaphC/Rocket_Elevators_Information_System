@@ -1,122 +1,3 @@
-<div id="wrapper">
-
-<!-- 
-    AVAILABLE HEADER CLASSES
-
-    Default nav height: 96px
-    .header-md 		= 70px nav height
-    .header-sm 		= 60px nav height
-
-    .b-0 		= remove bottom border (only with transparent use)
-    .transparent	= transparent header
-    .translucent	= translucent header
-    .sticky			= sticky header
-    .static			= static header
-    .dark			= dark header
-    .bottom			= header on bottom
-    
-    shadow-before-1 = shadow 1 header top
-    shadow-after-1 	= shadow 1 header bottom
-    shadow-before-2 = shadow 2 header top
-    shadow-after-2 	= shadow 2 header bottom
-    shadow-before-3 = shadow 3 header top
-    shadow-after-3 	= shadow 3 header bottom
-
-    .clearfix		= required for mobile menu, do not remove!
-
-    Example Usage:  class="clearfix sticky header-sm transparent b-0"
--->
-<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
-
-    <!-- TOP NAV -->
-    <header id="topNav">
-        <div class="container">
-
-            <!-- Mobile Menu Button -->
-            <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-                <i class="fa fa-bars"></i>
-            </button>
-
-            <!-- Logo -->
-            <a class="logo float-left scrollTo" href="#top">
-                <img src="assets/images/R2.png" alt="" />
-            </a>
-
-            <!-- 
-                Top Nav 
-                
-                AVAILABLE CLASSES:
-                submenu-dark = dark sub menu
-            -->
-            <div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
-                <nav class="nav-main">
-
-                    <!-- 
-                        .nav-onepage
-                        Required for onepage navigation links
-                        
-                        Add .external for an external link!
-                    -->
-                    <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
-                        <li class="active"><!-- HOME -->
-                            <a id="home-nav" href="/">
-                            <a id="home-nav" href="index.html">
-                            <a id="home-nav" href="/">
-                                HOME
-                            </a>
-                        </li>
-                        <li><!-- SERVICES -->
-                            <a id="services-nav" href="index.html#services" class="dropdown-toggle">
-                                SERVICES
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="residential.html">Residential View</a></li>
-                                <li><a href="commercial.html">Commercial View</a></li>
-                                <li><a href="quote.html">Get a Quote</a></li>
-                            </ul>
-                        </li>
-                        <li><!-- PORTFOLIO -->
-                            <a id="portfolio-nav" href="index.html#portfolio">
-                                PORTFOLIO
-                            </a>
-                        </li>
-                        <li><!-- NEWS -->
-                            <a id="news-nav" href="index.html#news">
-                                NEWS
-                            </a>
-                        </li>
-                        <li><!-- CLIENTS -->
-                            <a id="clients-nav" href="index.html#clients">
-                                CLIENTS
-                            </a>
-                        </li>
-                        <li><!-- CONTACT -->
-                            <a id="contact-nav" href="index.html#contact">
-                                CONTACT
-                            </a>
-                        </li>
-                        <li><!-- LOGIN -->
-                        <a id="login-nav" href="#">
-                            LOGIN
-                        </a>
-                    </li>
-                    <li><!-- ADMIN -->
-                        <a id="admin-nav" href="#">
-                            ADMIN
-                        </a>
-                    </li>
-                    </ul>
-
-                </nav>
-            </div>
-
-        </div>
-    </header>
-    <!-- /Top Nav -->
-
-</div>
-
-
 <!-- BUTTON CALLOUT -->
 <a href="#" class="btn btn-lg btn-primary fs-20 fullwidth m-0 rad-0 p-40">
     <span class="font-lato fs-30">
@@ -138,7 +19,7 @@
                     <div class="front">
                         <div class="box1 box-default">
                             <span class="box-icon-title">
-                                <img style="height: 350px;" class="img-fluid" src="assets/images/AdobeStock_146216308.jpeg" alt="" />
+                                <%= image_tag("AdobeStock_146216308.jpeg", alt: "", class: "img-fluid") %>                
                                 <h2>Design</h2>
                             </span>
                         </div>
@@ -168,9 +49,7 @@
                     <div class="front">
                         <div class="box1 box-default">
                             <span class="box-icon-title">
-                                <%= image_tag("taipei101.jpg", alt: "", class: "img-responsive") %>                
-                                <img style="height: 350px;" class="img-fluid" src="assets/images/taipei101.jpg" alt="" />
-                                <%= image_tag("taipei101.jpg", alt: "", class: "img-responsive") %>                
+                                <%= image_tag("taipei101.jpg", alt: "", class: "img-fluid") %>                
                                 <h2>Elevator Systems</h2>
                             </span>
                         </div>
@@ -200,7 +79,8 @@
                     <div class="front">
                         <div class="box1 box-default">
                             <span class="box-icon-title">
-                                <img style="height: 350px;" class="img-fluid" src="assets/images/AdobeStock_41696502.jpeg" alt="" />
+                                <img style="px;" class="img-fluid" src="assets/images/" alt="" />
+                                <%= image_tag("AdobeStock_41696502.jpeg", alt: "", class: "img-fluid", height: 350) %>                
                                 <h2>Maintenance and Repair</h2>
                             </span>
                         </div>
@@ -283,7 +163,7 @@
 
 
 <!-- Parallax -->
-<section class="parallax parallax-1" style="background-image: url('assets/images/AdobeStock_66781279.jpeg');">
+<section class="parallax parallax-1" style="background-image: url(<%= image_path 'AdobeStock_66781279.jpeg' %>);">
 
     <div class="overlay dark-5"><!-- dark overlay [1 to 9 opacity] --></div>
 
@@ -312,22 +192,22 @@
         <ul class="row clients-dotted list-inline">
             <li class="col-md-3 col-sm-3 col-6">
                 <a>
-                    <%= image_tag("logos/Walmart_logo.jpg", alt: "falling", class: "img-responsive") %>                
+                    <%= image_tag("logos/Walmart_logo.jpg", alt: "falling", class: "img-fluid") %>                
                 </a>
             </li>
             <li class="col-md-3 col-sm-3 col-6">
                 <a>
-                    <%= image_tag("logos/cbc_logo.jpg", alt: "falling", class: "img-responsive") %>                
+                    <%= image_tag("logos/cbc_logo.jpg", alt: "falling", class: "img-fluid") %>                
                 </a>
             </li>
             <li class="col-md-3 col-sm-3 col-6">
                 <a>
-                    <%= image_tag("logos/videotron_logo.jpg", alt: "falling", class: "img-responsive") %>                
+                    <%= image_tag("logos/videotron_logo.jpg", alt: "falling", class: "img-fluid") %>                
                 </a>
             </li>
             <li class="col-md-3 col-sm-3 col-6">
                 <a>
-                    <%= image_tag("logos/h_inn_logo.png", alt: "falling", class: "img-responsive") %>                
+                    <%= image_tag("logos/h_inn_logo.png", alt: "falling", class: "img-fluid") %>                
                 </a>
             </li>						
         </ul>
@@ -335,56 +215,3 @@
     </div>
 </section>
 <!-- /Clients -->
-
-
-
-
-
-
-<!-- FOOTER -->
-<footer id="footer">
-    <div class="container">
-
-
-        <div class="row">
-
-            <!-- col #1 -->
-            <div class="col-md-8">
-
-                <h3 class="letter-spacing-1">WHY US?</h3>
-
-                <!-- Small Description -->
-                <p>
-                    We have the conviction that we create the most innovative and reliable products on the market. 
-                    Contact us today for any questions you might have.
-                </p>
-                <h2>(418) 555-1234</h2>
-            </div>
-            <!-- /col #1 -->
-
-
-        </div>
-
-
-    </div>
-
-    <div class="copyright">
-        <div class="container">
-            <ul class="float-right m-0 list-inline mobile-block">
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li>&bull;</li>
-                <li><a href="#">Privacy</a></li>
-            </ul>
-            &copy; All Rights Reserved, Company LTD
-        </div>
-    </div>
-
-</footer>
-<!-- /FOOTER -->
-
-</div>
-<!-- /wrapper -->
-
-
-<!-- SCROLL TO TOP -->
-<a href="#" id="toTop"></a>
