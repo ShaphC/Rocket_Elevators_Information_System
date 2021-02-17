@@ -1,0 +1,10 @@
+quote:
+   building_type: residential
+   nb_app_building:  4
+   nb_floors_building: 2
+   nb_dist_businesses: 2
+   nb_park_spaces: 10
+   nb_cages_deployed: 2
+   nb_separate_tenant_companies: 6
+   nb_occup_floor: 5
+   product: teste_product
