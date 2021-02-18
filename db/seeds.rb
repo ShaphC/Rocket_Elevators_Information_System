@@ -17,7 +17,32 @@ employee_list = [
   ]
   
   employee_list.each do |first_name, last_name, title, email|
-    Employee.create( first_name: first_name, last_name: last_name, title: title, email: email )
+    Employee.create(first_name: first_name, last_name: last_name, title: title, email: email)
   end
 
   p "Created #{Employee.count} employee(s)."
+
+# Employee.create(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz")
+# Employee.create(first_name: "Nadya", last_name: "Fortier", title: "Director", email: "nadya.fortier@codeboxx.biz")
+# Employee.create(first_name: "Martin", last_name: "Chantal", title: "Director Assistant", email: "martin.chantal@codeboxx.biz")
+# Employee.create(first_name: "Mathieu", last_name: "Houde", title: "Captain", email: "mathieu.houde@codeboxx.biz")
+# Employee.create(first_name: "David", last_name: "Boutin", title: "Engineer", email: "david.boutin@codeboxx.biz")
+# Employee.create(first_name: "Mathieu", last_name: "Lortie", title: "Engineer", email: "mathieu.lortie@codeboxx.biz")
+# Employee.create(first_name: "Thomas", last_name: "Carrier", title: "Engineer", email: "thomas.carrier@codeboxx.biz")
+
+# p "Created #{Employee.count} employee(s)."
+
+# Employee.all.each do |employee|
+#   user = User.new({
+#     email: employee.email,
+#     password: 123456,
+#     password_confirmation: 123456,
+#     admin: true})
+#   employee.user = user
+#   employee.save!
+
+#   puts(employee.first_name, employee.user_id)
+#   print
+# end
+
+

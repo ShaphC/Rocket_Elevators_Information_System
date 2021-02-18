@@ -26,12 +26,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-<<<<<<< HEAD
   database: myapp_test
-=======
-
-  database: myapp_development
->>>>>>> 253d7138b727d6652c99d2c8dafcde7cdbb47573
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
