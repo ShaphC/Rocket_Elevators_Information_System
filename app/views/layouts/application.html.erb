@@ -84,8 +84,12 @@
                           </a>
                       </li>
                       <li id="login-nav"><!-- LOGIN -->
-                          <%= link_to 'LOGIN',sign_in_path %>
-                      </>
+                        <% if current_user%>
+                            <%= link_to 'LOGOUT', destroy_user_session_path, method: :delete%>
+                            <%else%>
+                            <%=link_to "LOGIN", new_user_session_path%>
+                        <%end%>
+                      </li>
                       <li id="admin-nav"><!-- ADMIN -->
                         <%= link_to 'ADMIN', rails_admin_path, target: :_blank %>
                       </li>
