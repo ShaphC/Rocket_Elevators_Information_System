@@ -17,7 +17,14 @@ User.create(email: "admin@admin.ca", password: 123456, password_confirmation: 12
 
 p "Created #{User.count} user(s)."
 
-Employee.create!(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz", user_id: 1)
+# User.all.each do |user|
+#   print user.user_id
+#   employee = Employee.create(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz")
+# end
+
+
+# @employee = @user.employees.create(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz")
+Employee.create(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz", user_id: 1)
 Employee.create(first_name: "Nadya", last_name: "Fortier", title: "Director", email: "nadya.fortier@codeboxx.biz", user_id: 2)
 Employee.create(first_name: "Martin", last_name: "Chantal", title: "Director Assistant", email: "martin.chantal@codeboxx.biz", user_id: 3)
 Employee.create(first_name: "Mathieu", last_name: "Houde", title: "Captain", email: "mathieu.houde@codeboxx.biz", user_id: 4)
@@ -27,15 +34,3 @@ Employee.create(first_name: "Thomas", last_name: "Carrier", title: "Engineer", e
 Employee.create(first_name: "Admin", last_name: "Admin", title: "Admin", email: "admin@admin.ca", user_id: 8)
 
 p "Created #{Employee.count} employee(s)."
-
-# Employee.all.each do |employee|
-#   user = User.new({
-#     email: employee.email,
-#     password: 123456,
-#     password_confirmation: 123456})
-#   employee.user = user
-#   employee.save!
-
-#   puts(employee.first_name, employee.user_id)
-#   print
-# end
