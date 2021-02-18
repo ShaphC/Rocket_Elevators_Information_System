@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # root 'pages#index'
 
   #get 'pages/:residential', to: 'index#residential', as: 'residential'
+
   get 'pages/residential' => 'pages#residential', as: :residential
   #root :to => "pages#residential", :id => 'residential'
 
@@ -20,5 +21,10 @@ Rails.application.routes.draw do
 
   get 'pages/quote' => 'pages#quote', as: :quote
 
+  post "pages/quote", to: "quote#create"
+  #post 'pages/quote:id', to: 'quote#create', as: 'new_event'
+  #post "pages/quote", controller: 'quote', action:create
+
+  #post 'admin', controller: 'admins', action: :create
   #get 'pages/index' => 'pages#index', as: :index
 end
