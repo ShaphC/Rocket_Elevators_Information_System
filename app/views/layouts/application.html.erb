@@ -91,7 +91,10 @@
                         <%end%>
                       </li>
                       <li id="admin-nav"><!-- ADMIN -->
-                        <%= link_to 'ADMIN', rails_admin_path, target: :_blank %>
+                        <% if current_user.try(:admin?)%>
+                            <%= link_to 'ADMIN', rails_admin_path, target: :_blank %>
+                            <%else%>
+                        <%end%>
                       </li>
                   </ul>
   
