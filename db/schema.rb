@@ -10,25 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_021534) do
+ActiveRecord::Schema.define(version: 2021_02_18_135458) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "title"
     t.string "email"
-  end
-
-  create_table "quote", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "building_type"
-    t.integer "nb_app_building"
-    t.integer "nb_floors_building"
-    t.integer "nb_dist_businesses"
-    t.integer "nb_park_spaces"
-    t.integer "nb_cages_deployed"
-    t.integer "nb_separate_tenant_companies"
-    t.integer "nb_occup_floor"
-    t.string "product"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -44,10 +32,15 @@ ActiveRecord::Schema.define(version: 2021_02_17_021534) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", limit: 35
-    t.string "last_name", limit: 40
-    t.string "email", limit: 250
-    t.string "password", limit: 45
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
