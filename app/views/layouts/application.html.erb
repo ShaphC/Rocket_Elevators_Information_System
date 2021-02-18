@@ -83,11 +83,9 @@
                               CONTACT
                           </a>
                       </li>
-                      <li><!-- LOGIN -->
-                          <a id="login-nav" href="#">
-                              LOGIN
-                          </a>
-                      </li>
+                      <li id="login-nav"><!-- LOGIN -->
+                          <%= link_to 'USERS',sign_in_path, target: :_blank %>
+                      </>
                       <li id="admin-nav"><!-- ADMIN -->
                         <%= link_to 'ADMIN', rails_admin_path, target: :_blank %>
                       </li>
