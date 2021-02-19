@@ -1,147 +1,148 @@
-<section>
-<div class="container">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<hmtl>
+    <body>
+        <div class="container">
+            <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-
-    
-
-
-    <div style="font-size: larger heading-title text-center">
-        <h1 id="underline" >Get a Quote</h1>
-    
-        <%= form_with model: @quote do |form| %> 
-        
-     
-            <label for="contact:name">Contact Full Name *</label>
-            <input id="name" required type="text" value="" class="form-control" name="quote[name]">
-    
-            <label for="contact:email">E-mail Address *</label>
-            <input id="email" required type="email" value="" class="form-control" name="quote[email]">
-    
-            <label for="contact:phone">Phone Number</label>
-            <input id="phone" type="text" value="" class="form-control" name="quote[phone]">
-        
-        
-        <div class="row justify-content-around">
-                <div id="lined" class="col-md-6 col-sm-6 solid">
-                    <h2 id="underline" style="text-align: center; margin-bottom: 20px; margin-top:20px;">Building Information</h2>
-
-                    <div style="text-align:left;" id="formSelect"> <!--enctype="multipart/form-data"-->
-                        <label for="contact_type">Building Type:</label>
-                        <select id="building-type" name:"quote[bType]" class="form-control pointer">
-                            <option value="" selected="selected" >Choose Building Type</option>
-                            <option id="residential" value="residential" >Residential</option>
-                            <option id="commercial" value="commercial" >Commercial</option>
-                            <option id="corporate" value="corporate" >Corporate</option>
-                            <option id="hybrid" value="hybrid" >Hybrid</option>
-                        </select>
-
-                            <!-- Residential-->
-                            <div id="number-of-apartments" name="number-of-apartments" style="display:none" class="form-field residential">
-                                <label class="fs-6">The number of apartments in the building*</label>
-                                <input class="data" type="number" id="numApart" min="1" name="quote[numApart]"  >
-                            </div>
-                            
-                            <div id="number-of-floors" style="display:none" class="form-field residential">
-                                <label class="fs-6">The number of floors contained in the building*</label>
-                                <input class="data" type="number" id="numFloor" name="quote[numFloor]" min="1"  >
-                            </div>
-
-                            <div id="number-of-basements" style="display:none" class="form-field residential">
-                                <label class="fs-6">The number of basements contained in the building*</label>
-                                <input class="data" type="number" id="numBase" name="quote[numBase]" min="1" >
-                            </div>
-                            
-                            <!-- Commercial-->
-                            <div id="number-of-companies" style="display:none" class="form-field commercial">
-                                <label class="fs-6">The number of distinct businesses</label>
-                                <input class="data" type="number" id="numBusi" min="1" name="quote[numBusi]" >
-                            </div>
-
-
-                            <div id="number-of-parking-spots" style="display:none" class="form-field commercial">
-                                <label class="fs-6">The number of parking space available</label>
-                                <input class="data" type="number" id="numPark" min="1" name="quote[numPark]" >
-                            </div>
-
-                            <div id="number-of-elevators" style="display:none" class="form-field commercial">
-                                <label class="fs-6">The number of elevator cages to be deployed*</label>
-                                <input class="data" type="number" id="numCage" min="1" name="quote[numCage]"  >
-                            </div>
-                            
-
-                            <!-- Corporate-->
-                            <div id="number-of-corporations" style="display:none" class="form-field corporate">
-                                <label class="fs-6">The number of separate tenant companies</label>
-                                <input class="data" type="number" id="numCorp" name="quote[numCorp]" min="1" >
-                            </div>
-
-                            <div id="maximum-occupancy" style="display:none" class="form-field corporate">
-                                <label class="fs-6">The maximum number of occupants per floor*</label>
-                                <input class="data" type="number" id="occpFloor" name="quote[occpFloor]" min="1"  >
-                            </div>
+            <div style="font-size: larger heading-title text-center">
+                <h1 id="underline" >Get a Quote</h1>
+            
+                <%= form_with model: @quote, :html => {:id => "buildingForm"} do |form| %>
                     
-                            <!-- Hybrid-->
-                            <div id="business-hours" style="display:none" class="form-field hybrid">
-                                <label class="fs-6">The number of hours of activity of the building (the maximum being 24)</label>
-                                <input class="data" type="number" id="numHour" name="quote[numHour]" min="1" max="24" >
-                            </div>
-                                
-                            <div id="productLine" class="form-field hybrid"><br>
-                                <p id="underline" style="font-weight: bold">Product Line</p>
-                                <input type="radio" id="standard" name="quote[product]" value="standard">
-                                <label class="inline" for="standard">Standard</label><br>
-                                <input type="radio" id="premium" name="quote[product]" value="premium">
-                                <label class="inline" for="premium">Premium</label><br>
-                                <input type="radio" id="excelium" name="quote[product]" value="excelium">
-                                <label class="inline" for="excelium">Excelium</label>
-                            </div>
+                <div class="row justify-content-around">
+                        <div id="lined" class="col-md-6 col-sm-6 solid">
 
-                            <div class="col-md-12">
-                            <br>
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> SUBMIT</button>
-                            </div>
 
-                            <% end %>
-                        <br>
-                    </div>	
+                            <label for="contact:name">Contact Full Name *</label>
+                            <input id="name" required type="text" value="" class="form-control" name="quote[name]">
 
-                </div>
-
-                <!--This is the Estimate Box-->
-                <div style="text-align:left;" class="col-md-5 col-sm-5 solid">
-                    <h2 id="underline" style="text-align:center; margin-bottom: 20px; margin-top:20px;">Estimate</h2>
-
-                    <div id="elevator-amount">
-                        <label style="font-weight: bolder;">Total Number of Elevators Needed: </label>
-                        <input class="data" type="number" id="result0" placeholder="0" readonly>	
-                    </div>
-
-                    <!--The input TYPEs need to be text in order to pass in the Resulting information-->
-                    <div id="elevator-unit-price">
-                        <label value="">Unit Price for each Elevator:</label>
-                        <input class="data" type="text" id="result1" placeholder="$0.00" readonly>
-                    </div>                                    
+                            <label for="contact:email">E-mail Address *</label>
+                            <input id="email" required type="email" value="" class="form-control" name="quote[email]">
                     
-                    <div id="elevator-total-price">
-                        <label>Total Price of the Elevators:</label>
-                        <input class="data" type="text" id="result2" placeholder="$0.00" readonly>
-                    </div>
+                            <label for="contact:phone">Phone Number</label>
+                            <input id="phone" type="text" value="" class="form-control" maxlength="12" name="quote[phone]">
+                                    
+                             <h2 id="underline" style="text-align: center; margin-bottom: 20px; margin-top:20px;">Building Information</h2>
 
-                    <div id="installation-fees">
-                        <label>Installation Fees:</label>
-                        <input class="data" type="text" id="result3" placeholder="$0.00" readonly>
-                    </div>
+                            <div style="text-align:left;" id="formSelect"> <!--enctype="multipart/form-data"-->
+                                <label for="contact_type">Building Type:</label>
+                                <select id="building-type" name="quote[bType]" class="form-control pointer">
+                                    <option value="" selected="selected" >Choose Building Type</option>
+                                    <option id="residential" value="residential" >Residential</option>
+                                    <option id="commercial" value="commercial" >Commercial</option>
+                                    <option id="corporate" value="corporate" >Corporate</option>
+                                    <option id="hybrid" value="hybrid" >Hybrid</option>
+                                </select>
 
-                    <div id="final-price">
-                        <label style="font-weight: bolder;" id="final-price">Final Price:</label>
-                        <input class="data" type="text" id="result4" placeholder="$0.00" readonly>
+                                    <!-- Residential-->
+                                    <div id="number-of-apartments" name="number-of-apartments" style="display:none" class="form-field residential">
+                                        <label class="fs-6">The number of apartments in the building*</label>
+                                        <input class="data" type="number" id="numApart" min="1" name="quote[numApart]"  >
+                                    </div>
+                                    
+                                    <div id="number-of-floors" style="display:none" class="form-field residential">
+                                        <label class="fs-6">The number of floors contained in the building*</label>
+                                        <input class="data" type="number" id="numFloor" name="quote[numFloor]" min="1"  >
+                                    </div>
+
+                                    <div id="number-of-basements" style="display:none" class="form-field residential">
+                                        <label class="fs-6">The number of basements contained in the building*</label>
+                                        <input class="data" type="number" id="numBase" name="quote[numBase]" min="1" >
+                                    </div>
+                                    
+                                    <!-- Commercial-->
+                                    <div id="number-of-companies" style="display:none" class="form-field commercial">
+                                        <label class="fs-6">The number of distinct businesses</label>
+                                        <input class="data" type="number" id="numBusi" min="1" name="quote[numBusi]" >
+                                    </div>
+
+
+                                    <div id="number-of-parking-spots" style="display:none" class="form-field commercial">
+                                        <label class="fs-6">The number of parking space available</label>
+                                        <input class="data" type="number" id="numPark" min="1" name="quote[numPark]" >
+                                    </div>
+
+                                    <div id="number-of-elevators" style="display:none" class="form-field commercial">
+                                        <label class="fs-6">The number of elevator cages to be deployed*</label>
+                                        <input class="data" type="number" id="numCage" min="1" name="quote[numCage]"  >
+                                    </div>
+                                    
+
+                                    <!-- Corporate-->
+                                    <div id="number-of-corporations" style="display:none" class="form-field corporate">
+                                        <label class="fs-6">The number of separate tenant companies</label>
+                                        <input class="data" type="number" id="numCorp" name="quote[numCorp]" min="1" >
+                                    </div>
+
+                                    <div id="maximum-occupancy" style="display:none" class="form-field corporate">
+                                        <label class="fs-6">The maximum number of occupants per floor*</label>
+                                        <input class="data" type="number" id="occpFloor" name="quote[occpFloor]" min="1"  >
+                                    </div>
+                            
+                                    <!-- Hybrid-->
+                                    <div id="business-hours" style="display:none" class="form-field hybrid">
+                                        <label class="fs-6">The number of hours of activity of the building (the maximum being 24)</label>
+                                        <input class="data" type="number" id="numHour" name="quote[numHour]" min="1" max="24" >
+                                    </div>
+                                        
+                                    <div id="productLine" class="form-field hybrid"><br>
+                                        <p id="underline" style="font-weight: bold">Product Line</p>
+                                        <input type="radio" id="standard" name="quote[product]" value="standard">
+                                        <label class="inline" for="standard">Standard</label><br>
+                                        <input type="radio" id="premium" name="quote[product]" value="premium">
+                                        <label class="inline" for="premium">Premium</label><br>
+                                        <input type="radio" id="excelium" name="quote[product]" value="excelium">
+                                        <label class="inline" for="excelium">Excelium</label>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                    <br>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> SUBMIT</button>
+                                    </div>
+
+                                   
+                                <br>
+                            </div>	
+
+                        </div>
+
+                        <!--This is the Estimate Box-->
+                        <div style="text-align:left;" class="col-md-5 col-sm-5 solid">
+                            <h2 id="underline" style="text-align:center; margin-bottom: 20px; margin-top:20px;">Estimate</h2>
+
+                            <div id="elevator-amount">
+                                <label style="font-weight: bolder;">Total Number of Elevators Needed: </label>
+                                <input class="data" type="number" id="result0" name="quote[numElev]" placeholder="0" readonly>	
+                            </div>
+
+                            <!--The input TYPEs need to be text in order to pass in the Resulting information-->
+                            <div id="elevator-unit-price">
+                                <label value="">Unit Price for each Elevator:</label>
+                                <input class="data" type="text" id="result1" name="quote[unitP]" placeholder="$0.00" readonly>	
+                            </div>                                    
+                            
+                            <div id="elevator-total-price">
+                                <label>Total Price of the Elevators:</label>
+                                <input class="data" type="text" id="result2" name="quote[totalP]" placeholder="$0.00" readonly>
+                            </div>
+
+                            <div id="installation-fees">
+                                <label>Installation Fees:</label>
+                                <input class="data" type="text" id="result3" name="quote[instalP]" placeholder="$0.00" readonly>
+                            </div>
+
+                            <div id="final-price">
+                                <label style="font-weight: bolder;" id="final-price">Final Price:</label>
+                                <input class="data" type="text" id="result4" name="quote[finalP]" placeholder="$0.00" readonly>	
+                            </div>
+                            <!--<p id="result5">Number of Columns: </p>
+                            <p id="result6">Number of Elevators per Column: </p>-->
+                            
+                        </div>
+                        <% end %>
+                         <br>
                     </div>
-                    <!--<p id="result5">Number of Columns: </p>
-                    <p id="result6">Number of Elevators per Column: </p>-->
-                    
-                </div>
             </div>
-    </div>
-</div>
-</section>
+        </div>
+    </body>
+</html>
