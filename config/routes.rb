@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users 
-  get 'users/sign_in' => 'users#sign_in', as: :sign_in
+  devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get 'users/sign_in' => 'users#sign_in', as: :sign_in
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # root 'pages#index'
 
   #get 'pages/:residential', to: 'index#residential', as: 'residential'
+
   get 'pages/residential' => 'pages#residential', as: :residential
   #root :to => "pages#residential", :id => 'residential'
 
@@ -22,6 +23,11 @@ Rails.application.routes.draw do
 
   get 'pages/quote' => 'pages#quote', as: :quote
 
+  post "pages/quote", to: "quote#create"
+  #post 'pages/quote:id', to: 'quote#create', as: 'new_event'
+  #post "pages/quote", controller: 'quote', action:create
+
+  #post 'admin', controller: 'admins', action: :create
   #get 'pages/index' => 'pages#index', as: :index
   # devise_for :users, controllers: { registrations: "registrations"}
   # as :user do

@@ -10,25 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_135458) do
+ActiveRecord::Schema.define(version: 2021_02_18_184831) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "title"
     t.string "email"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "building_type"
-    t.integer "nb_app_building"
-    t.integer "nb_floors_building"
-    t.integer "nb_dist_businesses"
-    t.integer "nb_park_spaces"
-    t.integer "nb_cages_deployed"
-    t.integer "nb_separate_tenant_companies"
-    t.integer "nb_occup_floor"
+    t.string "name", limit: 100
+    t.string "email", limit: 200
+    t.string "phone", limit: 20
+    t.string "bType"
+    t.integer "numApart"
+    t.integer "numFloor"
+    t.integer "numBase"
+    t.integer "numBusi"
+    t.integer "numPark"
+    t.integer "numCage"
+    t.integer "occpFloor"
+    t.integer "numHour"
+    t.integer "numCorp"
     t.string "product"
+    t.string "numElev"
+    t.string "unitP"
+    t.string "totalP"
+    t.string "instalP"
+    t.string "finalP"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -39,8 +51,10 @@ ActiveRecord::Schema.define(version: 2021_02_18_135458) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "employees", "users"
 end

@@ -153,7 +153,8 @@
                     data-endelementdelay="0.1"
                     data-endspeed="500"
                     style="z-index: 4; max-width: auto;">
-                        <a class="btn btn-primary btn-md" href="residential.html">Residential &nbsp; <i class="fa fa-angle-right"></i></a>
+                        
+                        <a><%= link_to 'Residential', residential_path, class: "btn btn-primary btnmd" %></a>
                 </div>
 
             </li>
@@ -208,7 +209,9 @@
                     data-endelementdelay="0.1"
                     data-endspeed="500"
                     style="z-index: 4; max-width: auto;">
-                        <a class="btn btn-primary btnmd" href="commercial.html">Corporate &nbsp; <i class="fa fa-angle-right"></i></a>
+                        
+                        
+                    <a><%= link_to 'Commercial', commercial_path, class: "btn btn-primary btnmd" %></a>
                 </div>
 
             </li>
@@ -690,7 +693,7 @@
         <div class="owl-carousel text-center owl-testimonial m-0" data-plugin-options='{"singleItem": true, "autoPlay": 3500, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
             <div id="CEO" class="testimonial">
                 <figure>
-                    <%= image_tag("testimonial/CEO.PNG", alt: "CEO", class: "img-responsive") %>                
+                    <%= image_tag("testimonial/CEO.PNG", alt: "CEO", class: "rounded") %>                
                 </figure>
                 <div class="testimonial-content p-0">
                     <p class="lead">CEO of Rocket Elevators</p>
@@ -702,7 +705,7 @@
             </div>
             <div id="employee" class="testimonial">
                 <figure>
-                    <%= image_tag("testimonial/employee-of-the-month.PNG", alt: "Employee of the Month", class: "img-responsive") %>                
+                    <%= image_tag("testimonial/employee-of-the-month.PNG", alt: "Employee of the Month", class: "rounded") %>                
                 </figure>
                 <div class="testimonial-content p-0">
                     <p class="lead">Full-Stack Software Developer</p>
