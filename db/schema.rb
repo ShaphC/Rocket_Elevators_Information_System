@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_184831) do
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "building_type"
     t.integer "nb_app_building"
@@ -30,7 +31,28 @@ ActiveRecord::Schema.define(version: 2021_02_18_184831) do
     t.integer "nb_cages_deployed"
     t.integer "nb_separate_tenant_companies"
     t.integer "nb_occup_floor"
+=======
+  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", limit: 100
+    t.string "email", limit: 200
+    t.string "phone", limit: 20
+    t.string "bType"
+    t.integer "numApart"
+    t.integer "numFloor"
+    t.integer "numBase"
+    t.integer "numBusi"
+    t.integer "numPark"
+    t.integer "numCage"
+    t.integer "occpFloor"
+    t.integer "numHour"
+    t.integer "numCorp"
+>>>>>>> main
     t.string "product"
+    t.string "numElev"
+    t.string "unitP"
+    t.string "totalP"
+    t.string "instalP"
+    t.string "finalP"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
