@@ -37,7 +37,7 @@ $(document).ready(function() {
                     num3: $('#numCage').val(),
                     num4: $('#numBase').val(),
                     num5: $('#occpFloor').val(),
-                    prod: $('input[name="product"]:checked').val()
+                    prod: $('input[name="quote[product]"]:checked').val()
                 }
 
                 transmit(formInfo)
