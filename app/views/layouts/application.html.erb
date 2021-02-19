@@ -83,13 +83,18 @@
                               CONTACT
                           </a>
                       </li>
-                      <li><!-- LOGIN -->
-                          <a id="login-nav" href="#">
-                              LOGIN
-                          </a>
+                      <li id="login-nav"><!-- LOGIN -->
+                        <% if current_user%>
+                            <%= link_to 'LOGOUT', destroy_user_session_path, method: :delete%>
+                            <%else%>
+                            <%=link_to "LOGIN", new_user_session_path%>
+                        <%end%>
                       </li>
                       <li id="admin-nav"><!-- ADMIN -->
-                        <%= link_to 'ADMIN', rails_admin_path, target: :_blank %>
+                        <% if current_user.try(:admin?)%>
+                            <%= link_to 'ADMIN', rails_admin_path, target: :_blank %>
+                            <%else%>
+                        <%end%>
                       </li>
                   </ul>
   
@@ -112,8 +117,14 @@
   
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
+
+
   </body>
+
+  
 
 
   <!-- FOOTER -->

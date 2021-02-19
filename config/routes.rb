@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get 'users/sign_in' => 'users#sign_in', as: :sign_in
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'
 
@@ -27,4 +29,10 @@ Rails.application.routes.draw do
 
   #post 'admin', controller: 'admins', action: :create
   #get 'pages/index' => 'pages#index', as: :index
+  # devise_for :users, controllers: { registrations: "registrations"}
+  # as :user do
+  #   get '/' => 'devise/registrations#new'
+  # end
+  # mount ActionCable.server => "/cable"
+  # resources :grid
 end
