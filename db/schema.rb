@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2021_02_18_184831) do
     t.string "email"
   end
 
-  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100
     t.string "email", limit: 200
-    t.string "phone", limit: 20
+    t.integer "phone"
     t.string "bType"
     t.integer "numApart"
     t.integer "numFloor"
@@ -34,11 +34,6 @@ ActiveRecord::Schema.define(version: 2021_02_18_184831) do
     t.integer "numHour"
     t.integer "numCorp"
     t.string "product"
-    t.string "numElev"
-    t.string "unitP"
-    t.string "totalP"
-    t.string "instalP"
-    t.string "finalP"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
