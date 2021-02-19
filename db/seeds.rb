@@ -15,15 +15,6 @@ User.create(email: "mathieu.lortie@codeboxx.biz", password: 123456, password_con
 User.create(email: "thomas.carrier@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
 User.create(email: "admin@admin.ca", password: 123456, password_confirmation: 123456, admin: true)
 
-p "Created #{User.count} user(s)."
-
-# User.all.each do |user|
-#   print user.user_id
-#   employee = Employee.create(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz")
-# end
-
-
-# @employee = @user.employees.create(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz")
 Employee.create(first_name: "Nicolas", last_name: "Genest", title: "CEO", email: "nicolas.genest@codeboxx.biz", user_id: 1)
 Employee.create(first_name: "Nadya", last_name: "Fortier", title: "Director", email: "nadya.fortier@codeboxx.biz", user_id: 2)
 Employee.create(first_name: "Martin", last_name: "Chantal", title: "Director Assistant", email: "martin.chantal@codeboxx.biz", user_id: 3)
@@ -33,4 +24,3 @@ Employee.create(first_name: "Mathieu", last_name: "Lortie", title: "Engineer", e
 Employee.create(first_name: "Thomas", last_name: "Carrier", title: "Engineer", email: "thomas.carrier@codeboxx.biz", user_id: 7)
 Employee.create(first_name: "Admin", last_name: "Admin", title: "Admin", email: "admin@admin.ca", user_id: 8)
 
-p "Created #{Employee.count} employee(s)."
