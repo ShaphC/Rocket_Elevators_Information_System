@@ -1,6 +1,4 @@
 class QuoteController < ApplicationController
-    skip_before_filter :verify_authenticity_token 
-    skip_before_filter :authenticate_user!, :only => "reply", :raise => false
     
     def index
         #@produtos = Produto.order(nome: :desc).limit 2
