@@ -11,4 +11,4 @@ class CreateEmployees < ActiveRecord::Migration[5.2]
    def self.down
       drop_table :employees
    end
-  end
+end
