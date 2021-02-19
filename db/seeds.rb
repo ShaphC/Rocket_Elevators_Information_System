@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: "nicolas.genest@codeboxx.biz", password: 123456, password_confirmation: 123456)
-User.create(email: "nadya.fortier@codeboxx.biz", password: 123456, password_confirmation: 123456)
-User.create(email: "martin.chantal@codeboxx.biz", password: 123456, password_confirmation: 123456)
-User.create(email: "mathieu.houde@codeboxx.biz", password: 123456, password_confirmation: 123456)
-User.create(email: "david.boutin@codeboxx.biz", password: 123456, password_confirmation: 123456)
-User.create(email: "mathieu.lortie@codeboxx.biz", password: 123456, password_confirmation: 123456)
-User.create(email: "thomas.carrier@codeboxx.biz", password: 123456, password_confirmation: 123456)
-User.create(email: "admin@admin.ca", password: 123456, password_confirmation: 123456)
+User.create(email: "nicolas.genest@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
+User.create(email: "nadya.fortier@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
+User.create(email: "martin.chantal@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
+User.create(email: "mathieu.houde@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
+User.create(email: "david.boutin@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
+User.create(email: "mathieu.lortie@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
+User.create(email: "thomas.carrier@codeboxx.biz", password: 123456, password_confirmation: 123456, admin: true)
+User.create(email: "admin@admin.ca", password: 123456, password_confirmation: 123456, admin: true)
 
 p "Created #{User.count} user(s)."
 
