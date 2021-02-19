@@ -6,7 +6,7 @@ RailsAdmin.config do |config|
     if current_user.try(:admin?)
       warden.authenticate!
     else
-      redirect_to 'localhost:3000'
+      redirect_to 'recharles.com'
     end
   end
   config.current_user_method(&:current_user)
