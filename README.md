@@ -16,4 +16,4 @@ All members of CodeBoxx from the employees list provided are able to log in as a
 
 One aditional user was created, admin@admin.ca, with a password of 123456 as well.
 
-The fully deployed version of this website can be found at recharles.com .
+The fully deployed version of this website can be found at recharles.com.
