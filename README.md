@@ -1,6 +1,6 @@
 # Rocket_Elevators_Information_System
 
-This repository contains the work of Shaphan Charles team from week 4 of CodeBoxx's Odyssey program. The code contained is an adaptation of Shaphan's Genesis project to work withing a Ruby on Rails framework.
+This repository contains the work of Shaphan Charles team from week 4 of CodeBoxx's Odyssey program. The code contained is an adaptation of Shaphan's Genesis project to work within a Ruby on Rails framework.
 
 Devise was used to create the login sections of the page, and Rails Admin was used to construct the admin portion.
 
