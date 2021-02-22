@@ -10,46 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_184831) do
+ActiveRecord::Schema.define(version: 2021_02_22_185318) do
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "title"
-    t.string "email"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_employees_on_user_id"
-  end
-
-  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "name", limit: 100
-    t.string "email", limit: 200
-    t.integer "phone"
-    t.string "bType"
-    t.integer "numApart"
-    t.integer "numFloor"
-    t.integer "numBase"
-    t.integer "numBusi"
-    t.integer "numPark"
-    t.integer "numCage"
-    t.integer "occpFloor"
-    t.integer "numHour"
-    t.integer "numCorp"
-    t.string "product"
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+  create_table "dim_customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "CreationDate"
+    t.string "CompanyName"
+    t.text "MainContactName"
+    t.string "MainContactEmail"
+    t.integer "NbElevators"
+    t.string "CustomerCity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "employees", "users"
+  create_table "fact_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "ContactId"
+    t.date "CreationDate"
+    t.string "CompanyName"
+    t.string "Email"
+    t.string "ProjectName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fact_elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "SerialNumber"
+    t.date "DateOfCommissioning"
+    t.integer "BuildingId"
+    t.integer "CustomerId"
+    t.string "BuildingCity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fact_quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "QuoteId"
+    t.string "Creation"
+    t.string "CompanyName"
+    t.string "Email"
+    t.integer "NbElevator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
