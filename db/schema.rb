@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_02_18_184831) do
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "title"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 2021_02_18_184831) do
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
-  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100
     t.string "email", limit: 200
-    t.integer "phone"
+    t.string "phone", limit: 20
     t.string "bType"
     t.integer "numApart"
     t.integer "numFloor"
@@ -36,9 +36,14 @@ ActiveRecord::Schema.define(version: 2021_02_18_184831) do
     t.integer "numHour"
     t.integer "numCorp"
     t.string "product"
+    t.string "numElev"
+    t.string "unitP"
+    t.string "totalP"
+    t.string "instalP"
+    t.string "finalP"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
