@@ -1,5 +1,3 @@
-require 'csv'
-
 namespace :import do
     task import_task: :environment do
         # users = []
@@ -35,26 +33,26 @@ namespace :import do
         # end
 
 
-        customers = []
-        i = Customer.count + 1
-        users.each do
-            customers << Customer.new(
-                id: i,
-                company_name: Faker::Company.name,
-                full_name_of_the_company_contact: Faker::Name.name,
-                company_contact_phone: Faker::PhoneNumber.phone_number,
-                email_of_the_company_contact: users.email,
-                company_description: Faker::Company.industry,
-                full_name_of_service_technical_authority: Faker::Company.name, #is random company good enough?
-                technical_authority_phone_for_service: Faker::PhoneNumber.phone_number,
-                technical_manager_email_for_service: Faker::Internet.unique.safe_email,
-                addresses_id: address[i].id, #might need rephrasing
-                user_id: user.id #might need rephrasing
-            )
-            i += 1
-        end
-        # Customer.import! customers
-        p customers
+        # customers = []
+        # i = Customer.count + 1
+        # users.each do
+        #     customers << Customer.new(
+        #         id: i,
+        #         company_name: Faker::Company.name,
+        #         full_name_of_the_company_contact: Faker::Name.name,
+        #         company_contact_phone: Faker::PhoneNumber.phone_number,
+        #         email_of_the_company_contact: users.email,
+        #         company_description: Faker::Company.industry,
+        #         full_name_of_service_technical_authority: Faker::Company.name, #is random company good enough?
+        #         technical_authority_phone_for_service: Faker::PhoneNumber.phone_number,
+        #         technical_manager_email_for_service: Faker::Internet.unique.safe_email,
+        #         addresses_id: address[i].id, #might need rephrasing
+        #         user_id: user.id #might need rephrasing
+        #     )
+        #     i += 1
+        # end
+        # # Customer.import! customers
+        # p customers
 
         batteries = []
         i = Batterie.count + 1
@@ -74,7 +72,7 @@ namespace :import do
         i+= 1
         end
         # Batterie.import! batteries
-        # p batteries #Prints batterie array
+        p batteries #Prints batterie array
     end
 end
 
