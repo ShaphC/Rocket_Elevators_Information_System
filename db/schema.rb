@@ -84,7 +84,11 @@ ActiveRecord::Schema.define(version: 2021_02_23_224942) do
     t.string "finalP"
   end
 
+<<<<<<< HEAD
   create_table "tets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+=======
+  create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+>>>>>>> fe3c84a4d328982de96aa40c694ebd57a7747fd5
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

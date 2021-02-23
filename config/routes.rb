@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'users/sign_in' => 'users#sign_in', as: :sign_in
+  get 'users/sign_out' => 'users#sign_out', as: :sign_out
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#index'
 
@@ -35,4 +36,9 @@ Rails.application.routes.draw do
   # end
   # mount ActionCable.server => "/cable"
   # resources :grid
+ 
+
+devise_scope :users do  
+   get '/users/sign_out' => 'devise/sessions#destroy'     
+end
 end
