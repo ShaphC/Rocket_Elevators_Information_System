@@ -80,3 +80,6 @@ gem 'devise'
 
 #Active REcord Import used to put data into database
 gem 'activerecord-import'
+
+#Faker for generating data
+gem 'faker'
