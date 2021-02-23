@@ -10,51 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_210058) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "dim_customers", force: :cascade do |t|
-    t.date "CreationDate"
-    t.string "CompanyName"
-    t.text "MainContactName"
-    t.string "MainContactEmail"
-    t.integer "NbElevators"
-    t.string "CustomerCity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fact_contacts", force: :cascade do |t|
-    t.integer "ContactId"
-    t.date "CreationDate"
-    t.string "CompanyName"
-    t.string "Email"
-    t.string "ProjectName"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fact_elevators", force: :cascade do |t|
-    t.integer "SerialNumber"
-    t.date "DateOfCommissioning"
-    t.integer "BuildingId"
-    t.integer "CustomerId"
-    t.string "BuildingCity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "dim_customer_id"
-    t.index ["dim_customer_id"], name: "index_fact_elevators_on_dim_customer_id"
-  end
-
-  create_table "fact_quotes", force: :cascade do |t|
-    t.integer "QuoteId"
-    t.date "CreationDate"
-    t.string "CompanyName"
-    t.string "Email"
-    t.integer "NbElevator"
-  end
+ActiveRecord::Schema.define(version: 2021_02_23_224800) do
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "BuildingId"
@@ -100,55 +56,11 @@ ActiveRecord::Schema.define(version: 2021_02_22_210058) do
     t.index ["column_id"], name: "index_elevators_on_column_id"
   end
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "title"
-    t.string "email"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_employees_on_user_id"
-  end
-
-  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", limit: 100
-    t.string "email", limit: 200
-    t.string "phone", limit: 20
-    t.string "bType"
-    t.integer "numApart"
-    t.integer "numFloor"
-    t.integer "numBase"
-    t.integer "numBusi"
-    t.integer "numPark"
-    t.integer "numCage"
-    t.integer "occpFloor"
-    t.integer "numHour"
-    t.integer "numCorp"
-    t.string "product"
-    t.string "numElev"
-    t.string "unitP"
-    t.string "totalP"
-    t.string "instalP"
-    t.string "finalP"
-  end
-
-  create_table "tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+  create_table "test_tables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "fact_elevators", "dim_customers"
   add_foreign_key "columns", "batteries", column: "batterie_id"
   add_foreign_key "elevators", "columns"
-  add_foreign_key "employees", "users"
 end

@@ -9,28 +9,19 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
-postgres: &postgres
-  adapter: postgresql
-  encoding: unicode
-  database: test
-  host: localhost
-  pool: 5
-  username: postgres
-  password: password
 
 mysql2: &mysql2
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: test
+  database: rocketelevators_development
   pool: 5
   username: root
   password: password
 
 development:
-  <<: *postgres
-  database: test
-
+  <<: *mysql2
+  database: rocketelevators_development
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
