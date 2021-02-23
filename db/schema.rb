@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_165159) do
+ActiveRecord::Schema.define(version: 2021_02_23_180451) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type_of_address"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_165159) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "building_id"
+    t.bigint "building_id"
     t.index ["building_id"], name: "index_building_details_on_building_id"
   end
 
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_165159) do
     t.string "rechnical_contact_phone_for_the_building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id"
     t.bigint "addresses_id"
+    t.bigint "customer_id"
     t.index ["addresses_id"], name: "index_buildings_on_addresses_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_165159) do
     t.string "technical_manager_email_for_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.bigint "addresses_id"
+    t.bigint "user_id"
     t.index ["addresses_id"], name: "index_customers_on_addresses_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
@@ -127,7 +127,10 @@ ActiveRecord::Schema.define(version: 2021_02_23_165159) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "addresses", column: "addresses_id"
+  add_foreign_key "buildings", "customers"
   add_foreign_key "customers", "addresses", column: "addresses_id"
+  add_foreign_key "customers", "users"
   add_foreign_key "employees", "users"
 end
