@@ -10,7 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_022839) do
+ActiveRecord::Schema.define(version: 2021_02_22_210058) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "dim_customers", force: :cascade do |t|
+    t.date "CreationDate"
+    t.string "CompanyName"
+    t.text "MainContactName"
+    t.string "MainContactEmail"
+    t.integer "NbElevators"
+    t.string "CustomerCity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fact_contacts", force: :cascade do |t|
+    t.integer "ContactId"
+    t.date "CreationDate"
+    t.string "CompanyName"
+    t.string "Email"
+    t.string "ProjectName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fact_elevators", force: :cascade do |t|
+    t.integer "SerialNumber"
+    t.date "DateOfCommissioning"
+    t.integer "BuildingId"
+    t.integer "CustomerId"
+    t.string "BuildingCity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "dim_customer_id"
+    t.index ["dim_customer_id"], name: "index_fact_elevators_on_dim_customer_id"
+  end
+
+  create_table "fact_quotes", force: :cascade do |t|
+    t.integer "QuoteId"
+    t.date "CreationDate"
+    t.string "CompanyName"
+    t.string "Email"
+    t.integer "NbElevator"
+  end
 
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "BuildingId"
@@ -101,11 +145,9 @@ ActiveRecord::Schema.define(version: 2021_02_23_022839) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "fact_elevators", "dim_customers"
   add_foreign_key "columns", "batteries", column: "batterie_id"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
