@@ -45,10 +45,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_165159) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
-    t.bigint "adresses_id"
     t.bigint "addresses_id"
     t.index ["addresses_id"], name: "index_buildings_on_addresses_id"
-    t.index ["adresses_id"], name: "index_buildings_on_adresses_id"
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
@@ -65,10 +63,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_165159) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.bigint "adress_id"
     t.bigint "addresses_id"
     t.index ["addresses_id"], name: "index_customers_on_addresses_id"
-    t.index ["adress_id"], name: "index_customers_on_adress_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
