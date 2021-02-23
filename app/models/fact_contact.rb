@@ -1,10 +1,9 @@
-class Quote < ApplicationRecord
+class FactContact < ApplicationRecord
     ApplicationRecord.establish_connection(
-        { :adapter => 'mysql2',
+        { :adapter => 'postgresql',
           :database => 'rocketelevators_development',
           :host => 'localhost',
-          :username => 'root',
+          :username => 'postgres',
           :password => 'password' }
        )
-    #has_one  :user
 end
