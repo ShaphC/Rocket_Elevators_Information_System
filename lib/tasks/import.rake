@@ -25,7 +25,7 @@ namespace :import do
                 EmployeeId: Faker::Number.between(from: 1, to: Employee.count), #Must be linked to employee table
                 Date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
                 Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
-                Certificate_of_Operations: '654',
+                Certificate_of_Operations: Faker::Alphanumeric.alpha(number: 12),
                 Information: "Currently online, no issues.",
                 Notes: "No current notes.",
                 # building_id: building[i].id

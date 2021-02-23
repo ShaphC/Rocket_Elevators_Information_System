@@ -22,14 +22,14 @@ mysql2: &mysql2
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: test
+  database: myapp_development
   pool: 5
   username: root
-  password: password
+  password: Pa$$w0rd!
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
-  <<: *postgres
-  database: test
+  <<: *mysql2
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
