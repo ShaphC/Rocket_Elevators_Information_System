@@ -10,9 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_171359) do
+ActiveRecord::Schema.define(version: 2021_02_23_022839) do
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "BuildingId"
+    t.string "Type", limit: 100
+    t.string "Status"
+    t.string "EmployeeId"
+    t.date "Date_of_commissioning"
+    t.date "Date_of_last_inspection"
+    t.string "Certificate_of_Operations"
+    t.string "Information", limit: 500
+    t.string "Notes", limit: 500
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "BuildingId"
+    t.string "Type"
+    t.integer "Number_of_floors"
+    t.string "Status"
+    t.string "Information", limit: 500
+    t.string "Notes", limit: 500
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "batterie_id"
+    t.index ["batterie_id"], name: "index_columns_on_batterie_id"
+  end
+
+  create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "ColumnId"
+    t.string "Serial_number", limit: 100
+    t.string "Model"
+    t.string "Type"
+    t.string "Status"
+    t.date "Date_of_commissioning"
+    t.date "Date_of_last_inspection"
+    t.string "Certificate_of_inspection"
+    t.string "Information", limit: 500
+    t.string "Notes", limit: 500
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "column_id"
+    t.index ["column_id"], name: "index_elevators_on_column_id"
+  end
+
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "title"
@@ -21,16 +65,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_171359) do
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
-  create_table "meumodelos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nome"
-    t.string "sobrenome"
-    t.string "cargo"
-    t.float "salario"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100
     t.string "email", limit: 200
     t.string "phone", limit: 20
@@ -52,7 +87,13 @@ ActiveRecord::Schema.define(version: 2021_02_22_171359) do
     t.string "finalP"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -65,5 +106,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_171359) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "columns", "batteries", column: "batterie_id"
+  add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
 end

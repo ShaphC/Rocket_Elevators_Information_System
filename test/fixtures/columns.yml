@@ -4,24 +4,14 @@ one:
   BatteryId: 
   Type: MyString
   Number_of_floors: MyString
-  served: MyString
-  int: MyString
   Status: MyString
-  int: MyString
   Information: MyString
-  string: MyString
   Notes: MyString
-  string: MyString
 
 two:
   BatteryId: 
   Type: MyString
   Number_of_floors: MyString
-  served: MyString
-  int: MyString
   Status: MyString
-  int: MyString
   Information: MyString
-  string: MyString
   Notes: MyString
-  string: MyString

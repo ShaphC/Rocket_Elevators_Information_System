@@ -3,23 +3,21 @@
 one:
   BuildingId: 
   Type: MyString
-  Statut: MyString
+  Status: MyString
   EmployeeId: MyString
-  Date_de_mise_en_service: 2021-02-22
-  Date_de_dernière_inspection: 2021-02-22
-  Certificat_: MyString
-  d’opérations: MyString
+  Date_of_commissioning: 2021-02-22
+  Date_of_last_inspection: 2021-02-22
+  Certificate_of_Operations: MyString
   Information: MyString
   Note: MyString
 
 two:
   BuildingId: 
   Type: MyString
-  Statut: MyString
+  Status: MyString
   EmployeeId: MyString
-  Date_de_mise_en_service: 2021-02-22
-  Date_de_dernière_inspection: 2021-02-22
-  Certificat_: MyString
-  d’opérations: MyString
+  Date_of_commissioning: 2021-02-22
+  Date_of_last_inspection: 2021-02-22
+  Certificate_of_Operations: MyString
   Information: MyString
   Note: MyString

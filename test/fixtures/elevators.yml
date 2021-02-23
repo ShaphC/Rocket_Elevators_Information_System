@@ -5,9 +5,10 @@ one:
   Serial_number: MyString
   Model: MyString
   Type: MyString
+  Status: MyString
   Date_of_commissioning: 2021-02-22
   Date_of_last_inspection: 2021-02-22
-  Inspection_certificate: MyString
+  Certificate_of_inspection: MyString
   Information: MyString
   Notes: MyString
 
@@ -16,8 +17,11 @@ two:
   Serial_number: MyString
   Model: MyString
   Type: MyString
+  Status: MyString
   Date_of_commissioning: 2021-02-22
   Date_of_last_inspection: 2021-02-22
-  Inspection_certificate: MyString
+  Certificate_of_inspection: MyString
   Information: MyString
   Notes: MyString
+
+
