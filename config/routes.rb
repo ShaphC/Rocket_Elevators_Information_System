@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :models
+  resources :addresses
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'users/sign_in' => 'users#sign_in', as: :sign_in
