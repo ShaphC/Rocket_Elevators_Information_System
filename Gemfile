@@ -79,3 +79,9 @@ gem 'bootstrap-social-rails'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'devise'
+
+#Active REcord Import used to put data into database
+gem 'activerecord-import'
+
+#Faker for generating data
+gem 'faker'
