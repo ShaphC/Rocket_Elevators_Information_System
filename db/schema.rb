@@ -10,9 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_185318) do
+ActiveRecord::Schema.define(version: 2021_02_22_210058) do
 
-  create_table "dim_customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "dim_customers", force: :cascade do |t|
     t.date "CreationDate"
     t.string "CompanyName"
     t.text "MainContactName"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_185318) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "fact_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "fact_contacts", force: :cascade do |t|
     t.integer "ContactId"
     t.date "CreationDate"
     t.string "CompanyName"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_185318) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "fact_elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "fact_elevators", force: :cascade do |t|
     t.integer "SerialNumber"
     t.date "DateOfCommissioning"
     t.integer "BuildingId"
@@ -41,11 +44,13 @@ ActiveRecord::Schema.define(version: 2021_02_22_185318) do
     t.string "BuildingCity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dim_customer_id"
+    t.index ["dim_customer_id"], name: "index_fact_elevators_on_dim_customer_id"
   end
 
-  create_table "fact_quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "fact_quotes", force: :cascade do |t|
     t.integer "QuoteId"
-    t.string "Creation"
+    t.date "CreationDate"
     t.string "CompanyName"
     t.string "Email"
     t.integer "NbElevator"
@@ -53,4 +58,5 @@ ActiveRecord::Schema.define(version: 2021_02_22_185318) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "fact_elevators", "dim_customers"
 end
