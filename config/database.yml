@@ -12,10 +12,10 @@
 postgres: &postgres
   adapter: postgresql
   encoding: unicode
-  database: scharles
+  database: postgres
   host: localhost
   pool: 5
-  username: scharles
+  username: postgres
   password: Pa$$w0rd!
 
 mysql2: &mysql2

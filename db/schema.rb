@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_02_23_180451) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -23,28 +22,20 @@ ActiveRecord::Schema.define(version: 2021_02_23_180451) do
     t.integer "postal_code"
     t.string "country"
     t.text "notes"
-  end
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "dim_customers", force: :cascade do |t|
-    t.date "CreationDate"
-    t.string "CompanyName"
-    t.text "MainContactName"
-    t.string "MainContactEmail"
-    t.integer "NbElevators"
-    t.string "CustomerCity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "fact_contacts", force: :cascade do |t|
-    t.integer "ContactId"
-    t.date "CreationDate"
-    t.string "CompanyName"
-    t.string "Email"
-    t.string "ProjectName"
+  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "BuildingId"
+    t.string "Type", limit: 100
+    t.string "Status"
+    t.string "EmployeeId"
+    t.date "Date_of_commissioning"
+    t.date "Date_of_last_inspection"
+    t.string "Certificate_of_Operations"
+    t.string "Information", limit: 500
+    t.string "Notes", limit: 500
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,6 +64,19 @@ ActiveRecord::Schema.define(version: 2021_02_23_180451) do
     t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
+  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "BuildingId"
+    t.string "Type"
+    t.integer "Number_of_floors"
+    t.string "Status"
+    t.string "Information", limit: 500
+    t.string "Notes", limit: 500
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "batterie_id"
+    t.index ["batterie_id"], name: "index_columns_on_batterie_id"
+  end
+
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "customer_s_creation_date"
     t.string "company_name"
@@ -91,51 +95,15 @@ ActiveRecord::Schema.define(version: 2021_02_23_180451) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
-  create_table "fact_elevators", force: :cascade do |t|
-    t.integer "SerialNumber"
-    t.date "DateOfCommissioning"
-    t.integer "BuildingId"
-    t.integer "CustomerId"
-    t.string "BuildingCity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "dim_customer_id"
-    t.index ["dim_customer_id"], name: "index_fact_elevators_on_dim_customer_id"
-  end
-
-  create_table "fact_quotes", force: :cascade do |t|
-    t.integer "QuoteId"
+  create_table "dim_customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "CreationDate"
     t.string "CompanyName"
-    t.string "Email"
-    t.integer "NbElevator"
-  end
-
-  create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "BuildingId"
-    t.string "Type", limit: 100
-    t.string "Status"
-    t.string "EmployeeId"
-    t.date "Date_of_commissioning"
-    t.date "Date_of_last_inspection"
-    t.string "Certificate_of_Operations"
-    t.string "Information", limit: 500
-    t.string "Notes", limit: 500
+    t.text "MainContactName"
+    t.string "MainContactEmail"
+    t.integer "NbElevators"
+    t.string "CustomerCity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "columns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "BuildingId"
-    t.string "Type"
-    t.integer "Number_of_floors"
-    t.string "Status"
-    t.string "Information", limit: 500
-    t.string "Notes", limit: 500
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "batterie_id"
-    t.index ["batterie_id"], name: "index_columns_on_batterie_id"
   end
 
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -164,6 +132,38 @@ ActiveRecord::Schema.define(version: 2021_02_23_180451) do
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
+  create_table "fact_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "ContactId"
+    t.date "CreationDate"
+    t.string "CompanyName"
+    t.string "Email"
+    t.string "ProjectName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fact_elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "SerialNumber"
+    t.date "DateOfCommissioning"
+    t.integer "BuildingId"
+    t.integer "CustomerId"
+    t.string "BuildingCity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "dim_customer_id"
+    t.index ["dim_customer_id"], name: "index_fact_elevators_on_dim_customer_id"
+  end
+
+  create_table "fact_quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "QuoteId"
+    t.date "CreationDate"
+    t.string "CompanyName"
+    t.string "Email"
+    t.integer "NbElevator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name_of_the_contact"
     t.string "company_name"
@@ -178,7 +178,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_180451) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100
@@ -216,17 +215,18 @@ ActiveRecord::Schema.define(version: 2021_02_23_180451) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "addresses", column: "addresses_id"
   add_foreign_key "buildings", "customers"
+  add_foreign_key "columns", "batteries", column: "batterie_id"
   add_foreign_key "customers", "addresses", column: "addresses_id"
   add_foreign_key "customers", "users"
-
-  add_foreign_key "fact_elevators", "dim_customers"
-  add_foreign_key "columns", "batteries", column: "batterie_id"
   add_foreign_key "elevators", "columns"
-
   add_foreign_key "employees", "users"
+  add_foreign_key "fact_elevators", "dim_customers"
 end
