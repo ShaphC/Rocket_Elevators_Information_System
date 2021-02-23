@@ -12,11 +12,11 @@
 postgres: &postgres
   adapter: postgresql
   encoding: unicode
-  database: test
+  database: scharles
   host: localhost
   pool: 5
-  username: postgres
-  password: password
+  username: scharles
+  password: Pa$$w0rd!
 
 mysql2: &mysql2
   adapter: mysql2
@@ -60,3 +60,4 @@ development:
 # production:
 #   <<: *default
 #   database: rocketelevators_production
+
