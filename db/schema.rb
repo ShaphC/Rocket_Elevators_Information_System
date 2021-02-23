@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_210058) do
+
+ActiveRecord::Schema.define(version: 2021_02_23_180451) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type_of_address"
+    t.string "status"
+    t.string "entity"
+    t.string "number_and_street"
+    t.string "suite_or_apartment"
+    t.string "city"
+    t.integer "postal_code"
+    t.string "country"
+    t.text "notes"
+  end
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +47,48 @@ ActiveRecord::Schema.define(version: 2021_02_22_210058) do
     t.string "ProjectName"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "information_key"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_building_details_on_building_id"
+  end
+
+  create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "full_name_of_the_building_administrator"
+    t.string "email_of_the_administrator_of_the_building"
+    t.integer "phone_number_of_the_building_administrator"
+    t.string "full_name_of_the_technical_contact_for_the_building"
+    t.string "echnical_contact_email_for_the_building"
+    t.string "rechnical_contact_phone_for_the_building"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "addresses_id"
+    t.bigint "customer_id"
+    t.index ["addresses_id"], name: "index_buildings_on_addresses_id"
+    t.index ["customer_id"], name: "index_buildings_on_customer_id"
+  end
+
+  create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "customer_s_creation_date"
+    t.string "company_name"
+    t.string "full_name_of_the_company_contact"
+    t.integer "company_contact_phone"
+    t.string "email_of_the_company_contact"
+    t.text "company_description"
+    t.string "full_name_of_service_technical_authority"
+    t.integer "technical_authority_phone_for_Service"
+    t.string "technical_manager_email_for_service"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "addresses_id"
+    t.bigint "user_id"
+    t.index ["addresses_id"], name: "index_customers_on_addresses_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "fact_elevators", force: :cascade do |t|
@@ -109,6 +164,22 @@ ActiveRecord::Schema.define(version: 2021_02_22_210058) do
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
+  create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "full_name_of_the_contact"
+    t.string "company_name"
+    t.string "email"
+    t.integer "phone"
+    t.string "project_name"
+    t.text "project_description"
+    t.string "department_in_charge_of_the_elevators"
+    t.text "message"
+    t.binary "attached_file"
+    t.date "date_of_the_contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100
     t.string "email", limit: 200
@@ -147,8 +218,15 @@ ActiveRecord::Schema.define(version: 2021_02_22_210058) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "building_details", "buildings"
+  add_foreign_key "buildings", "addresses", column: "addresses_id"
+  add_foreign_key "buildings", "customers"
+  add_foreign_key "customers", "addresses", column: "addresses_id"
+  add_foreign_key "customers", "users"
+
   add_foreign_key "fact_elevators", "dim_customers"
   add_foreign_key "columns", "batteries", column: "batterie_id"
   add_foreign_key "elevators", "columns"
+
   add_foreign_key "employees", "users"
 end

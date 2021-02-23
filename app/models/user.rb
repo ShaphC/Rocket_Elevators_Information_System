@@ -12,4 +12,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :employee
+  has_one :customer
+  
+
+  
 end
