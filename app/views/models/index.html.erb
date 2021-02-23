@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Models</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Type of address</th>
+      <th>Status</th>
+      <th>Entity</th>
+      <th>Number and street</th>
+      <th>Suite or apartment</th>
+      <th>City</th>
+      <th>Postal code</th>
+      <th>Country</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @models.each do |model| %>
+      <tr>
+        <td><%= model.address %></td>
+        <td><%= model.type_of_address %></td>
+        <td><%= model.status %></td>
+        <td><%= model.entity %></td>
+        <td><%= model.number_and_street %></td>
+        <td><%= model.suite_or_apartment %></td>
+        <td><%= model.city %></td>
+        <td><%= model.postal_code %></td>
+        <td><%= model.country %></td>
+        <td><%= model.notes %></td>
+        <td><%= link_to 'Show', model %></td>
+        <td><%= link_to 'Edit', edit_model_path(model) %></td>
+        <td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Model', new_model_path %>
