@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_160151) do
+ActiveRecord::Schema.define(version: 2021_02_23_165159) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type_of_address"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_160151) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "building_id"
+    t.index ["building_id"], name: "index_building_details_on_building_id"
   end
 
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -42,6 +44,12 @@ ActiveRecord::Schema.define(version: 2021_02_23_160151) do
     t.string "rechnical_contact_phone_for_the_building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.bigint "adresses_id"
+    t.bigint "addresses_id"
+    t.index ["addresses_id"], name: "index_buildings_on_addresses_id"
+    t.index ["adresses_id"], name: "index_buildings_on_adresses_id"
+    t.index ["customer_id"], name: "index_buildings_on_customer_id"
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -56,6 +64,12 @@ ActiveRecord::Schema.define(version: 2021_02_23_160151) do
     t.string "technical_manager_email_for_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.bigint "adress_id"
+    t.bigint "addresses_id"
+    t.index ["addresses_id"], name: "index_customers_on_addresses_id"
+    t.index ["adress_id"], name: "index_customers_on_adress_id"
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,5 +131,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_160151) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "buildings", "addresses", column: "addresses_id"
+  add_foreign_key "customers", "addresses", column: "addresses_id"
   add_foreign_key "employees", "users"
 end
