@@ -2,15 +2,37 @@ require 'csv'
 
 namespace :import do
     task import_task: :environment do
-        users = []
-        i = User.count + 1
-        300.times do
-            users << User.new(id: i, email: Faker::Internet.unique.safe_email, password: Faker::Internet.password(min_length: 6, max_length: 15), admin: Faker::Boolean.boolean)
-            i += 1
-        end
-        User.import! users
+        # users = []
+        # i = User.count + 1
+        # 300.times do
+        #     users << User.new(
+        #         id: i,
+        #         email: Faker::Internet.unique.safe_email, 
+        #         password: Faker::Internet.password(min_length: 6, max_length: 15)
+        #     )
+        #     i += 1
+        # end
+        # User.import! users
         # p users #print users array
 
+        batterie = []
+        i = Batterie.count + 1
+        5.times do
+            batterie << Batterie.new(
+                id: i,
+                Type: "hybrid", #not sure how to define b/w the 4 avaliable, might have to be hardcoded
+                Status: 'online',
+                EmployeeId: Faker::Number.between(from: 1, to: Employee.count), #Must be linked to employee table
+                Date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
+                Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
+                Certificate_of_Operations: '654',
+                Information: "Currently online, no issues.",
+                Notes: "No current notes.",
+                # building_id: building[i].id
+            )
+        i+= 1
+        end
+        p batterie #Prints batterie array
     end
 end
 
