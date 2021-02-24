@@ -8,6 +8,8 @@ Rails.application.load_tasks
 desc "Migrate the database through scripts in db/migrate."
 namespace :db do
   task :migrate do
+    Rake::Task["db:drop"].invoke
+    Rake::Task["db:create"].invoke
     Rake::Task["db:migrate_mysql"].invoke
     Rake::Task["db:migrate_postgres"].invoke
   end
