@@ -85,3 +85,6 @@ gem 'activerecord-import'
 
 #Faker for generating data
 gem 'faker'
+
+#JSON for generating adresses
+gem 'json'

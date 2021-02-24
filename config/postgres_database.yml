@@ -5,7 +5,7 @@ postgres: &postgres
   host: localhost
   pool: 5
   username: postgres
-  password: Pa$$w0rd!
+  password: password
 
 development:
   <<: *postgres
