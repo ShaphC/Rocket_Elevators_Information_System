@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.5'
 gem 'rails_admin', '~> 2.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+# Use postgres as the database for Active Record
+gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -80,3 +82,6 @@ gem 'devise'
 
 #Active REcord Import used to put data into database
 gem 'activerecord-import'
+
+#Faker for generating data
+gem 'faker'
