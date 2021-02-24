@@ -1,12 +1,12 @@
 postgres: &postgres
   adapter: postgresql
   encoding: unicode
-  database: rocketelevators_development
+  database: postgres
   host: localhost
   pool: 5
   username: postgres
-  password: password
+  password: Pa$$w0rd!
 
 development:
   <<: *postgres
-  database: rocketelevators_development
+  database: postgres
