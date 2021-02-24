@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+<<<<<<< HEAD
+=======
   ApplicationRecord.establish_connection(
       { :adapter => 'mysql2',
         :database => 'myapp_development',
@@ -8,6 +10,7 @@ class User < ApplicationRecord
         :socket => "/var/run/mysqld/mysqld.sock"
          },
      )
+>>>>>>> main
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, # 
