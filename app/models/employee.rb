@@ -1,4 +1,6 @@
 class Employee < ApplicationRecord
+<<<<<<< HEAD
+=======
     ApplicationRecord.establish_connection(
         { :adapter => 'mysql2',
           :database => 'myapp_development',
@@ -8,5 +10,6 @@ class Employee < ApplicationRecord
           :socket => "/var/run/mysqld/mysqld.sock"
            },
        )
+>>>>>>> main
     belongs_to :user
 end
