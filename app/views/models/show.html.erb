@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @model.address %>
+</p>
+
+<p>
+  <strong>Type of address:</strong>
+  <%= @model.type_of_address %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @model.status %>
+</p>
+
+<p>
+  <strong>Entity:</strong>
+  <%= @model.entity %>
+</p>
+
+<p>
+  <strong>Number and street:</strong>
+  <%= @model.number_and_street %>
+</p>
+
+<p>
+  <strong>Suite or apartment:</strong>
+  <%= @model.suite_or_apartment %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @model.city %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @model.postal_code %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @model.country %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @model.notes %>
+</p>
+
+<%= link_to 'Edit', edit_model_path(@model) %> |
+<%= link_to 'Back', models_path %>
