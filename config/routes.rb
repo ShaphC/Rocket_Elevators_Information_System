@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :test_tables
+  resources :fact_quotes
   resources :models
   resources :addresses
   devise_for :users
