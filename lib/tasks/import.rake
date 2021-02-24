@@ -4,16 +4,13 @@ file = File.read('address.json')
 
 data_hash = JSON.parse(file)
 
-
-
-# p randomAddress
-
 namespace :import do
     task import_task: :environment do
 
+        #Creating users to be imported
         users = []
         i = User.count + 1
-        5.times do
+        50.times do
             users << User.new(
                 id: i,
                 email: Faker::Internet.unique.safe_email, 
@@ -21,12 +18,12 @@ namespace :import do
             )
             i += 1
         end
-        # User.import! users
-        # p users #print users array
+        User.import! users
 
+        #Createing leads to be imported
         leads = []
         i = Lead.count + 1
-        5.times do
+        50.times do
             leads << Lead.new(
                 id: i,
                 full_name_of_the_contact: Faker::Name.name,
@@ -42,13 +39,13 @@ namespace :import do
             i += 1
         end
         Lead.import! leads
-        # p leads
 
+        #Creating customer addresses to be imported
         customer_addresses = []
         address_type = ["Residential", "Commercial", "Corporate", "Hybrid"]
         status = ["Active", "Inactive"]
         i = Address.count + 1
-        users.each do #users.each
+        users.each do
             random_address = data_hash['addresses'][Faker::Number.between(from: 0, to: 99)]
             customer_addresses << Address.new(
                 id: i,
@@ -64,14 +61,11 @@ namespace :import do
             )
             i += 1
         end
-        # Address.import! customer_addresses
-        # p customer_addresses #Print address array
+        Address.import! customer_addresses
 
-        # p ""
-        # p ""
-
+        #Cloning customrer address and changing entity to building
         building_addresses = []
-        i = Address.count + 1 #MAY NEED TO BE CHANGED
+        i = Address.count + 1
         x = 0
         customer_addresses.each do
             building_addresses << Address.new(
@@ -89,13 +83,9 @@ namespace :import do
             i += 1
             x += 1
         end
-        # Address.import! building_addresses
-        # p building_addresses #Print address array
+        Address.import! building_addresses
 
-        # p ""
-        # p ""
-
-
+        #Creating customers to be imported
         customers = []
         i = Customer.count + 1
         x = 0
@@ -107,71 +97,70 @@ namespace :import do
                 company_contact_phone: Faker::PhoneNumber.phone_number,
                 email_of_the_company_contact: users[x].email,
                 company_description: Faker::Company.industry,
-                full_name_of_service_technical_authority: Faker::Company.name, #is random company good enough?
+                full_name_of_service_technical_authority: Faker::Company.name,
                 technical_authority_phone_for_Service: Faker::PhoneNumber.phone_number,
                 technical_manager_email_for_service: Faker::Internet.unique.safe_email,
-                addresses_id: customer_addresses[x].id, #might need rephrasing
-                user_id: users[x].id #might need rephrasing
+                address_id: customer_addresses[x].id,
+                user_id: users[x].id
             )
             i += 1
             x += 1
         end
-        # Customer.import! customers
-        # p customers
+        Customer.import! customers
 
-        # p ""
-        # p ""
-
+        #Creating buildings to be imported
         buildings = []
         i = Building.count + 1
         x = 0
         customers.each do
             buildings << Building.new(
                 id: i,
+                full_name_of_the_building_administrator: Faker::Name.name,
                 email_of_the_administrator_of_the_building: Faker::Internet.unique.safe_email,
                 phone_number_of_the_building_administrator: Faker::PhoneNumber.phone_number,
                 full_name_of_the_technical_contact_for_the_building: Faker::Name.name,
                 echnical_contact_email_for_the_building: Faker::Internet.unique.safe_email,
                 rechnical_contact_phone_for_the_building: Faker::PhoneNumber.phone_number,
-                addresses_id: building_addresses[x].id,
+                address_id: building_addresses[x].id,
                 customer_id: customers[x].id,
         )
         i += 1
         x += 1
         end
-        # Building.import! buildings
-        # p buildings
+        Building.import! buildings
 
+        #Creating batteries to be imported
         batteries = []
+        batterie_type = ["Residential", "Commercial", "Corporate", "Hybrid"]
         i = Batterie.count + 1
         x = 0
         buildings.each do
             batteries << Batterie.new(
                 id: i,
-                Type: "hybrid", #not sure how to define b/w the 4 avaliable, might have to be hardcoded
+                Type: batterie_type[Faker::Number.between(from: 0, to: 3)],
                 Status: 'online',
-                EmployeeId: Faker::Number.between(from: 1, to: Employee.count), #Must be linked to employee table
+                EmployeeId: Faker::Number.between(from: 1, to: Employee.count),
                 Date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
-                Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today), #Fix at end. make sure date is after comission date
+                Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
                 Certificate_of_Operations: Faker::Alphanumeric.alphanumeric(number: 12),
                 Information: "Currently online, no issues.",
                 Notes: "No current notes.",
-                # building_id: buildings[x].id
+                building_id: buildings[x].id
             )
             i += 1
             x += 1
         end
-        # Batterie.import! batteries
-        # p batteries #Prints batterie array
+        Batterie.import! batteries
         
+        #Creating columns to be imported
         columns = []
-        column_type = ["Residential", "Commercial", "Corporate"]
+        column_type = ["Residential", "Commercial", "Corporate", "Hybrid"]
         i = Column.count + 1
         x = 0
         batteries.each do
             columns << Column.new(
                 id: i,
-                Type: column_type[Faker::Number.between(from: 0, to: 2)],
+                Type: column_type[Faker::Number.between(from: 0, to: 3)],
                 Number_of_floors: Faker::Number.between(from: 0, to: 60),
                 Status: "Online",
                 Information: "Currently online, no issues.",
@@ -181,9 +170,9 @@ namespace :import do
         i += 1
         x += 1
         end
-        # Column.import! columns
-        # p columns
+        Column.import! columns
         
+        #Creating elevators to be imported
         elevators = []
         elevator_model = ["Standard", "Premium", "Excelium"]
         i = Elevator.count + 1
@@ -196,7 +185,7 @@ namespace :import do
                 Type: columns[x].Type,
                 Status: "Online",
                 Date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
-                Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today), #Fix at end. make sure date is after comission date
+                Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
                 Certificate_of_inspection: Faker::Alphanumeric.alphanumeric(number: 12),
                 Information: "Currently online, no issues.",
                 Notes: "No current notes.",
@@ -205,65 +194,8 @@ namespace :import do
         i += 1
         x += 1
         end
-        # Elevator.import! elevators
-        # p elevators
+        Elevator.import! elevators
 
 
     end
 end
-
-
-
-
-
-        # buildings = []
-        # i = Building.count + 1
-        # x = 0
-        # customers.each do
-        #     buildings << Building.new(
-        #         id: i,
-        # )
-        # i += 1
-        # x += 1
-        # end
-        # Building.import! buildings
-        # p buildings
-
-
-
-
-
-
-# NO LONGER USED, STAYING FOR REFERENCE IF NEEDED
-
-        #REFERENCE FOR USING VALUES FROM ANOTHER TABLE
-        
-        # employees = []
-        # i = 0
-        # users.each do
-        #     if users[i].admin
-        #         employees << Employee.new(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, title: Faker::Job.title, email: users[i].email, user_id: users[i].id) 
-        #     end
-        #     i += 1
-        # end
-        # Employee.import! employees
-        # p employees #print users array
-
-        #FOR USE WHEN IMPORTING WITH CSV
-
-        # import_users = File.join Rails.root, "import_users.csv"
-        # i = User.count + 1
-        # CSV.foreach(import_users, headers: true) do |row|
-        #     users << User.new(id: i, email: row[0], password: row[1], admin: row[2])
-        #     i += 1
-        # end
-
-        
-        # import_employees = File.join Rails.root, "import_employees.csv"
-        # CSV.foreach(import_employees, headers: true) do |row|
-        #     if users[i].admin
-        #         employees << Employee.new(first_name: row[0], last_name: row[1], title: row[2], email: users[i].email, user_id: users[i].id) 
-        #     end
-        #     i += 1
-        # end
-
