@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_163147) do
+ActiveRecord::Schema.define(version: 2021_02_24_172232) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type_of_address"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_163147) do
   create_table "buildings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name_of_the_building_administrator"
     t.string "email_of_the_administrator_of_the_building"
-    t.integer "phone_number_of_the_building_administrator"
+    t.string "phone_number_of_the_building_administrator"
     t.string "full_name_of_the_technical_contact_for_the_building"
     t.string "echnical_contact_email_for_the_building"
     t.string "rechnical_contact_phone_for_the_building"
@@ -81,11 +81,11 @@ ActiveRecord::Schema.define(version: 2021_02_24_163147) do
     t.date "customer_s_creation_date"
     t.string "company_name"
     t.string "full_name_of_the_company_contact"
-    t.integer "company_contact_phone"
+    t.string "company_contact_phone"
     t.string "email_of_the_company_contact"
     t.text "company_description"
     t.string "full_name_of_service_technical_authority"
-    t.integer "technical_authority_phone_for_Service"
+    t.string "technical_authority_phone_for_Service"
     t.string "technical_manager_email_for_service"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_163147) do
     t.string "full_name_of_the_contact"
     t.string "company_name"
     t.string "email"
-    t.integer "phone"
+    t.string "phone"
     t.string "project_name"
     t.text "project_description"
     t.string "department_in_charge_of_the_elevators"
