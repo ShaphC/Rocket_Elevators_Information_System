@@ -10,65 +10,125 @@ namespace :import do
         #Creating users to be imported
         users = []
         i = User.count + 1
-        1.times do
+        10.times do
             users << User.new(
                 id: i,
                 email: Faker::Internet.unique.safe_email, 
                 password: Faker::Internet.password(min_length: 6, max_length: 15),
-                # admin: Faker::Boolean.boolean(true_ratio: 0.2) #If importing new employees, uncomment this boolean
+                admin: Faker::Boolean.boolean(true_ratio: 0.2) #If importing new employees, uncomment this boolean
             )
             i += 1
         end
-        # User.import! users
+        User.import! users
 
-        #ADD EMPLOYEE IMPORT
+        #Creating employees to be imported
+        employees = []
+        i = 0
+        users.each do
+            if users[i].admin
+                employees << Employee.new(
+                    first_name: Faker::Name.first_name,
+                    last_name: Faker::Name.last_name,
+                    title: Faker::Job.title, email: users[i].email,
+                    user_id: users[i].id
+                ) 
+            end
+            i += 1
+        end
+        Employee.import! employees
 
         #Creating quotes to be imported
         quotes = []
         building_type_options = ["residential", "commercial", "corporate", "hybrid"]
-        building_type = building_type_options[Faker::Number.between(from: 0, to: 3)]
         tier = ["standard", "premium", "excelium"]
-        tier_selected = tier[Faker::Number.between(from: 0, to: 2)]
+        number_of_elevators = ''
         total_price = ''
-        if building_type == "residential"
-            number_of_apartment = Faker::Number.between(from: 30, to: 600)
-            number_of_floors = Faker::Number.between(from: 1, to: 60)
-            number_of_basements = Faker::Number.between(from: 1, to: 5)
-        elsif building_type == "commercial"
-            number_of_floors = Faker::Number.between(from: 1, to: 60)
-            number_of_basements = Faker::Number.between(from: 1, to: 10)
-            number_of_businesses = Faker::Number.between(from: 1, to: 50)
-            number_of_parking_spots = Faker::Number.between(from: 50, to: 1000)
-            number_of_cages = Faker::Number.between(from: 1, to: 50)
-        elsif building_type == "corporate"
-            number_of_floors = Faker::Number.between(from: 1, to: 60)
-            number_of_basements = Faker::Number.between(from: 1, to: 10)
-            number_of_parking_spots = Faker::Number.between(from: 50, to: 1000)
-            number_of_corporations = Faker::Number.between(from: 1, to: 50)
-            occupants_per_floor = Faker::Number.between(from: 50, to: 500)
-        elsif building_type == "hybrid"
-            number_of_floors = Faker::Number.between(from: 1, to: 60)
-            number_of_basements = Faker::Number.between(from: 1, to: 50)
-            number_of_businesses = Faker::Number.between(from: 1, to: 50)
-            number_of_parking_spots = Faker::Number.between(from: 50, to: 1000)
-            occupants_per_floor = Faker::Number.between(from: 50, to: 500)
-            number_of_active_hours = Faker::Number.between(from: 1, to: 24)
-            number_of_corporations = Faker::Number.between(from: 1, to: 50)
-        end
-        if tier_selected == "standard"
-            unit_price = "$7,565.00"
-        elsif tier_selected == "premium"
-            unit_price = "$12,345.00"
-        elsif tier_selected == "excelium"
-            unit_price = "$15,400.00"
-        end
+        install_price = ''
+        final_price = ''
         i = Quote.count + 1
-        1.times do
+        p Quote.count
+        10.times do
+            building_type = building_type_options[Faker::Number.between(from: 0, to: 3)]
+            tier_selected = tier[Faker::Number.between(from: 0, to: 2)]
+            if tier_selected == "standard"
+                unit_price = "$7,565.00"
+                unit_price_calc = 7565
+                installation_fee = 0.10
+            elsif tier_selected == "premium"
+                unit_price = "$12,345.00"
+                unit_price_calc = 12345
+                installation_fee = 0.13
+            elsif tier_selected == "excelium"
+                unit_price = "$15,400.00"
+                unit_price_calc = 15400
+                installation_fee = 0.16
+            end
+            if building_type == "residential"
+                number_of_apartment = Faker::Number.between(from: 30, to: 600)
+                number_of_floors = Faker::Number.between(from: 1, to: 60)
+                number_of_basements = Faker::Number.between(from: 1, to: 5)
+                average_doors = number_of_apartment / number_of_floors
+                number_of_elevators = average_doors / 6
+                number_of_columns = number_of_floors / 20
+                number_of_elevators = number_of_columns.ceil * number_of_elevators.ceil
+                if number_of_elevators < 1
+                    number_of_elevators = 1
+                end
+                total_price = number_of_elevators * unit_price_calc
+                install_price = total_price * installation_fee
+                final_price = total_price + (total_price * installation_fee)
+            elsif building_type == "commercial"
+                number_of_floors = Faker::Number.between(from: 1, to: 60)
+                number_of_basements = Faker::Number.between(from: 1, to: 10)
+                number_of_businesses = Faker::Number.between(from: 1, to: 50)
+                number_of_parking_spots = Faker::Number.between(from: 50, to: 1000)
+                number_of_cages = Faker::Number.between(from: 1, to: 50)
+                number_of_elevators = number_of_cages
+                total_price = number_of_elevators * unit_price_calc
+                install_price = total_price * installation_fee
+                final_price = total_price + (total_price * installation_fee)
+            elsif building_type == "corporate"
+                number_of_floors = Faker::Number.between(from: 1, to: 60)
+                number_of_basements = Faker::Number.between(from: 1, to: 10)
+                number_of_parking_spots = Faker::Number.between(from: 50, to: 1000)
+                number_of_corporations = Faker::Number.between(from: 1, to: 50)
+                occupants_per_floor = Faker::Number.between(from: 50, to: 500)
+                total_occupants = occupants_per_floor * (number_of_floors + number_of_basements)
+                elevators = total_occupants / 1000
+                number_of_columns = (number_of_floors + number_of_basements) / 20
+                if number_of_columns < 1
+                    number_of_columns = 1
+                end
+                elevators_per_column = elevators.ceil / number_of_columns
+                number_of_elevators = elevators_per_column.ceil * number_of_columns.ceil
+                total_price = number_of_elevators * unit_price_calc
+                install_price = total_price * installation_fee
+                final_price = total_price + (total_price * installation_fee)
+            elsif building_type == "hybrid"
+                number_of_floors = Faker::Number.between(from: 1, to: 60)
+                number_of_basements = Faker::Number.between(from: 1, to: 50)
+                number_of_businesses = Faker::Number.between(from: 1, to: 50)
+                number_of_parking_spots = Faker::Number.between(from: 50, to: 1000)
+                occupants_per_floor = Faker::Number.between(from: 50, to: 500)
+                number_of_active_hours = Faker::Number.between(from: 1, to: 24)
+                number_of_corporations = Faker::Number.between(from: 1, to: 50)
+                total_occupants = occupants_per_floor * (number_of_floors + number_of_basements)
+                elevators = total_occupants / 1000
+                number_of_columns = (number_of_floors + number_of_basements) / 20
+                if number_of_columns < 1
+                    number_of_columns = 1
+                end
+                elevators_per_column = elevators.ceil / number_of_columns
+                number_of_elevators = elevators_per_column.ceil * number_of_columns.ceil
+                total_price = number_of_elevators * unit_price_calc
+                install_price = total_price * installation_fee
+                final_price = total_price + (total_price * installation_fee)
+            end
             quotes << Quote.new(
                 id: i,
                 name: Faker::Name.name,
                 email: Faker::Internet.unique.safe_email, 
-                phone: Faker::PhoneNumber.phone_number,
+                phone: Faker::PhoneNumber.cell_phone,
                 bType: building_type,
                 numApart: number_of_apartment,
                 numFloor: number_of_floors,
@@ -80,21 +140,20 @@ namespace :import do
                 numHour: number_of_active_hours,
                 numCorp: number_of_corporations,
                 product: tier_selected,
-                numElev: Faker::Number.between(from: 0, to: 30),
+                numElev: number_of_elevators,
                 unitP: unit_price,
-                totalP: "$1,000",
-                instalP: "$1,000",
-                finalP: "$1,000"
+                totalP: Money.new((100 * total_price), "USD").format,
+                instalP: Money.new((100 * install_price), "USD").format,
+                finalP: Money.new((100 * final_price), "USD").format
             )
             i += 1
         end
         Quote.import! quotes
-        p quotes
 
         #Createing leads to be imported
         leads = []
         i = Lead.count + 1
-        1.times do
+        10.times do
             leads << Lead.new(
                 id: i,
                 full_name_of_the_contact: Faker::Name.name,
@@ -109,7 +168,7 @@ namespace :import do
             )
             i += 1
         end
-        # Lead.import! leads
+        Lead.import! leads
 
         #Creating customer addresses to be imported
         customer_addresses = []
@@ -132,7 +191,7 @@ namespace :import do
             )
             i += 1
         end
-        # Address.import! customer_addresses
+        Address.import! customer_addresses
 
         #Cloning customrer address and changing entity to building
         building_addresses = []
@@ -154,7 +213,7 @@ namespace :import do
             i += 1
             x += 1
         end
-        # Address.import! building_addresses
+        Address.import! building_addresses
 
         #Creating customers to be imported
         customers = []
@@ -177,7 +236,7 @@ namespace :import do
             i += 1
             x += 1
         end
-        # Customer.import! customers
+        Customer.import! customers
 
         #Creating buildings to be imported
         buildings = []
@@ -198,7 +257,7 @@ namespace :import do
         i += 1
         x += 1
         end
-        # Building.import! buildings
+        Building.import! buildings
 
         #Creating batteries to be imported
         batteries = []
@@ -210,18 +269,19 @@ namespace :import do
                 id: i,
                 Type: batterie_type[Faker::Number.between(from: 0, to: 3)],
                 Status: 'online',
-                EmployeeId: Faker::Number.between(from: 1, to: Employee.count),
+                # EmployeeId: Faker::Number.between(from: 1, to: Employee.count),
                 Date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
                 Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
                 Certificate_of_Operations: Faker::Alphanumeric.alphanumeric(number: 12),
                 Information: "Currently online, no issues.",
                 Notes: "No current notes.",
-                building_id: buildings[x].id
+                building_id: buildings[x].id,
+                employee_id: Faker::Number.between(from: 1, to: Employee.count)
             )
             i += 1
             x += 1
         end
-        # Batterie.import! batteries
+        Batterie.import! batteries
         
         #Creating columns to be imported
         columns = []
@@ -241,7 +301,7 @@ namespace :import do
         i += 1
         x += 1
         end
-        # Column.import! columns
+        Column.import! columns
         
         #Creating elevators to be imported
         elevators = []
@@ -265,7 +325,7 @@ namespace :import do
         i += 1
         x += 1
         end
-        # Elevator.import! elevators
+        Elevator.import! elevators
 
         puts "Importing complete."
 
