@@ -10,7 +10,7 @@ namespace :import do
         #Creating users to be imported
         users = []
         i = User.count + 1
-        10.times do
+        50.times do
             users << User.new(
                 id: i,
                 email: Faker::Internet.unique.safe_email, 
@@ -47,7 +47,7 @@ namespace :import do
         final_price = ''
         i = Quote.count + 1
         p Quote.count
-        10.times do
+        50.times do
             building_type = building_type_options[Faker::Number.between(from: 0, to: 3)]
             tier_selected = tier[Faker::Number.between(from: 0, to: 2)]
             if tier_selected == "standard"
@@ -153,7 +153,7 @@ namespace :import do
         #Createing leads to be imported
         leads = []
         i = Lead.count + 1
-        10.times do
+        50.times do
             leads << Lead.new(
                 id: i,
                 full_name_of_the_contact: Faker::Name.name,
@@ -243,18 +243,21 @@ namespace :import do
         i = Building.count + 1
         x = 0
         customers.each do
-            buildings << Building.new(
-                id: i,
-                full_name_of_the_building_administrator: Faker::Name.name,
-                email_of_the_administrator_of_the_building: Faker::Internet.unique.safe_email,
-                phone_number_of_the_building_administrator: Faker::PhoneNumber.phone_number,
-                full_name_of_the_technical_contact_for_the_building: Faker::Name.name,
-                echnical_contact_email_for_the_building: Faker::Internet.unique.safe_email,
-                rechnical_contact_phone_for_the_building: Faker::PhoneNumber.phone_number,
-                address_id: building_addresses[x].id,
-                customer_id: customers[x].id,
-        )
-        i += 1
+            times = Faker::Number.between(from: 0, to: 5)
+            times.times do
+                buildings << Building.new(
+                    id: i,
+                    full_name_of_the_building_administrator: Faker::Name.name,
+                    email_of_the_administrator_of_the_building: Faker::Internet.unique.safe_email,
+                    phone_number_of_the_building_administrator: Faker::PhoneNumber.phone_number,
+                    full_name_of_the_technical_contact_for_the_building: Faker::Name.name,
+                    echnical_contact_email_for_the_building: Faker::Internet.unique.safe_email,
+                    rechnical_contact_phone_for_the_building: Faker::PhoneNumber.phone_number,
+                    address_id: building_addresses[x].id,
+                    customer_id: customers[x].id,
+                )
+            i += 1
+            end
         x += 1
         end
         Building.import! buildings
@@ -269,7 +272,6 @@ namespace :import do
                 id: i,
                 Type: batterie_type[Faker::Number.between(from: 0, to: 3)],
                 Status: 'online',
-                # EmployeeId: Faker::Number.between(from: 1, to: Employee.count),
                 Date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
                 Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
                 Certificate_of_Operations: Faker::Alphanumeric.alphanumeric(number: 12),
@@ -289,17 +291,22 @@ namespace :import do
         i = Column.count + 1
         x = 0
         batteries.each do
-            columns << Column.new(
-                id: i,
-                Type: column_type[Faker::Number.between(from: 0, to: 3)],
-                Number_of_floors: Faker::Number.between(from: 0, to: 60),
-                Status: "Online",
-                Information: "Currently online, no issues.",
-                Notes: "No current notes.",
-                batterie_id: batteries[x].id
-        )
-        i += 1
-        x += 1
+            column = column_type[Faker::Number.between(from: 0, to: 3)]
+            floors = Faker::Number.between(from: 0, to: 60)
+            times = Faker::Number.between(from: 0, to: 5)
+            times.times do
+                columns << Column.new(
+                    id: i,
+                    Type: column,
+                    Number_of_floors: floors,
+                    Status: "Online",
+                    Information: "Currently online, no issues.",
+                    Notes: "No current notes.",
+                    batterie_id: batteries[x].id
+            )
+            i += 1
+            end
+            x += 1
         end
         Column.import! columns
         
@@ -309,20 +316,24 @@ namespace :import do
         i = Elevator.count + 1
         x = 0
         columns.each do
-            elevators << Elevator.new(
-                id: i,
-                Serial_number: Faker::Alphanumeric.alphanumeric(number: 10),
-                Model: elevator_model[Faker::Number.between(from: 0, to: 2)],
-                Type: columns[x].Type,
-                Status: "Online",
-                Date_of_commissioning: Faker::Date.between(from: 3.years.ago, to: Date.today),
-                Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
-                Certificate_of_inspection: Faker::Alphanumeric.alphanumeric(number: 12),
-                Information: "Currently online, no issues.",
-                Notes: "No current notes.",
-                column_id: columns[x].id
-        )
-        i += 1
+            date_of_commission = Faker::Date.between(from: 3.years.ago, to: Date.today)
+            times = Faker::Number.between(from: 0, to: 5)
+            times.times do
+                elevators << Elevator.new(
+                    id: i,
+                    Serial_number: Faker::Alphanumeric.alphanumeric(number: 10),
+                    Model: elevator_model[Faker::Number.between(from: 0, to: 2)],
+                    Type: columns[x].Type,
+                    Status: "Online",
+                    Date_of_commissioning: date_of_commission,
+                    Date_of_last_inspection: Faker::Date.between(from: 3.years.ago, to: Date.today),
+                    Certificate_of_inspection: Faker::Alphanumeric.alphanumeric(number: 12),
+                    Information: "Currently online, no issues.",
+                    Notes: "No current notes.",
+                    column_id: columns[x].id
+            )
+            i += 1
+        end
         x += 1
         end
         Elevator.import! elevators
