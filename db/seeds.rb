@@ -23,4 +23,3 @@ Employee.create(first_name: "David", last_name: "Boutin", title: "Engineer", ema
 Employee.create(first_name: "Mathieu", last_name: "Lortie", title: "Engineer", email: "mathieu.lortie@codeboxx.biz", user_id: 6)
 Employee.create(first_name: "Thomas", last_name: "Carrier", title: "Engineer", email: "thomas.carrier@codeboxx.biz", user_id: 7)
 Employee.create(first_name: "Admin", last_name: "Admin", title: "Admin", email: "admin@admin.ca", user_id: 8)
-

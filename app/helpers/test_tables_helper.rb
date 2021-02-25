@@ -1,0 +1,2 @@
+module TestTablesHelper
+end
