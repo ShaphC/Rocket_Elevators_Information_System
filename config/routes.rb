@@ -43,6 +43,16 @@ Rails.application.routes.draw do
  
 
 devise_scope :users do  
-   get '/users/sign_out' => 'devise/sessions#destroy'     
+ get '/users/sign_out' => 'devise/sessions#destroy'     
 end
+ 
+
+resources :leads
+post '/leads', to: 'leads#create'
+
+# resources :leads do
+#   get "serve", :on => :member
+# end
+# resources :leads, :member => {:serve => :get}
+# post 'lead_form/create' => 'leads#create'
 end

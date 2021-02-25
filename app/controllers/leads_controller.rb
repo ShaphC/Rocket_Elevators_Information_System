@@ -1,69 +1,80 @@
 class LeadsController < ApplicationController
-  before_action :set_lead, only: %i[ show edit update destroy ]
+  def show
+    @lead = Lead.find(params[:id])
+  end
 
-  # GET /leads or /leads.json
   def index
     @leads = Lead.all
   end
 
-  # GET /leads/1 or /leads/1.json
-  def show
-  end
 
-  # GET /leads/new
+
   def new
     @lead = Lead.new
+    render 'pages/index.html.erb'
   end
 
-  # GET /leads/1/edit
-  def edit
-  end
+ 
+  
+  # def acceptable_file
+  #   return unless attached_file.attached?
+      
+  #       unless attached_file.byte_size <= 10.megabyte
+  #         errors.add(:attached_file, "is too big")
+  #       end
+
+  #       acceptable_types = ["image/jpeg", "image/png", "filename/docx", "filename/pdf"]
+  #         unless acceptable_types.include?(attached_file.content_type)
+  #           errors.add(:attached_file, "must be a JPEG, PNG, docx or pdf")
+  #         end
+  #   end
+  # end
+  
+
 
   # POST /leads or /leads.json
   def create
     @lead = Lead.new(lead_params)
+    # @lead.attached_file.attach(params[:attached_file])
+    attachment = params["attachment"]
+    @lead.attached_file = attachment
+    @lead.save!
 
-    respond_to do |format|
-      if @lead.save
-        format.html { redirect_to @lead, notice: "Lead was successfully created." }
-        format.json { render :show, status: :created, location: @lead }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+
+
+    # if @lead.save
+    #   render 'pages/index.html.erb' 
+    # end
+
+    
+   
+    if attachment == nil
+      puts "this is nil, tough luck"
+      if not nil 
+          @lead.file = attachment.read
+          @lead.attached_file = attachment.original_attached_file
       end
     end
-  end
 
-  # PATCH/PUT /leads/1 or /leads/1.json
-  def update
-    respond_to do |format|
-      if @lead.update(lead_params)
-        format.html { redirect_to @lead, notice: "Lead was successfully updated." }
-        format.json { render :show, status: :ok, location: @lead }
+    if @lead.save!
+        
+        redirect_back fallback_location: root_path, notice: "Thank you!!!Your message has been sent"
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
-      end
+        render :action => "new"
+        
     end
   end
-
-  # DELETE /leads/1 or /leads/1.json
-  def destroy
-    @lead.destroy
-    respond_to do |format|
-      format.html { redirect_to leads_url, notice: "Lead was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_lead
-      @lead = Lead.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
+  
+  # def destroy
+  #   @lead = Photo.find(params[:id])
+  #   @lead.destroyy
+  #   redirect_back fallback_location: root_path
+  # end
+ 
     def lead_params
-      params.require(:lead).permit(:full_name_of_the_contact, :company_name, :email, :phone, :project_name, :Project_description, :department_in_charge_of_the_elevators, :message, :attached_file, :date_of_the_contact)
+      params.require(:leads).permit(:full_name_of_the_contact, :company_name, :email, :phone, :project_name, :project_description, :department_in_charge_of_the_elevators, :message, :attached_file, :date_of_the_contact)
     end
+
 end
+
+   

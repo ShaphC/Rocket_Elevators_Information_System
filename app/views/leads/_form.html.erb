@@ -1,5 +1,4 @@
 <%= form_with(model: lead, local: true) do |form| %>
-  <% if lead.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
 
@@ -22,8 +21,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :e-mail %>
-    <%= form.text_field :e-mail %>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
   </div>
 
   <div class="field">
@@ -38,7 +37,7 @@
 
   <div class="field">
     <%= form.label :Project_description %>
-    <%= form.text_area :Project_description %>
+    <%= form.text_area :project_description %>
   </div>
 
   <div class="field">
