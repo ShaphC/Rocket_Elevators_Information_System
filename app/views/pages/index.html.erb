@@ -966,7 +966,7 @@
             </div><!-- /Alert Mandatory -->
 
 
-            <form id="lead_form" action="/leads" method='post' enctype="multipart/form-data">
+            <form id="leads" action="/leads" method='post' enctype="multipart/form-data">
                 <fieldset>
                     <input type="hidden" name="action" value="contact_send" />
 
@@ -1020,7 +1020,8 @@
                             <label for="contact:attachment">File Attachment</label>
 
                             <!-- custom file upload -->
-                            <input id="attachment" class="custom-file-upload" type="file" name="leads[attached_file]" data-btn-text="Select a File" />
+                            <input id="attach_file" class="custom-file-upload" type="file" id=
+                            "input" name="attachment" data-btn-text="Select a File" />
                             <small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
 
                         </div>
