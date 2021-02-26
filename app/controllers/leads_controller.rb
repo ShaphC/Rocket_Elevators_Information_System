@@ -38,7 +38,7 @@ class LeadsController < ApplicationController
     # @lead.attached_file.attach(params[:attached_file])
     attachment = params["attachment"]
     @lead.attached_file = attachment
-    @lead.save!
+    @lead.save
 
 
 
