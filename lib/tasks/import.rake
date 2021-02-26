@@ -1,8 +1,4 @@
-require 'json'
-
-file = File.read('address.json')
-
-data_hash = JSON.parse(file)
+data_hash = JSON.parse(File.read('address.json'))
 
 namespace :import do
     task import_task: :environment do
@@ -10,12 +6,12 @@ namespace :import do
         #Creating users to be imported
         users = []
         i = User.count + 1
-        50.times do
+        300.times do
             users << User.new(
                 id: i,
                 email: Faker::Internet.unique.safe_email, 
                 password: Faker::Internet.password(min_length: 6, max_length: 15),
-                admin: Faker::Boolean.boolean(true_ratio: 0.2) #If importing new employees, uncomment this boolean
+                admin: Faker::Boolean.boolean(true_ratio: 0.2)
             )
             i += 1
         end
@@ -46,8 +42,7 @@ namespace :import do
         install_price = ''
         final_price = ''
         i = Quote.count + 1
-        p Quote.count
-        50.times do
+        10.times do
             building_type = building_type_options[Faker::Number.between(from: 0, to: 3)]
             tier_selected = tier[Faker::Number.between(from: 0, to: 2)]
             if tier_selected == "standard"
@@ -152,8 +147,9 @@ namespace :import do
 
         #Createing leads to be imported
         leads = []
+        department = ['Marketing', 'Sales', 'Management']
         i = Lead.count + 1
-        50.times do
+        300.times do
             leads << Lead.new(
                 id: i,
                 full_name_of_the_contact: Faker::Name.name,
@@ -162,7 +158,7 @@ namespace :import do
                 phone: Faker::PhoneNumber.phone_number,
                 project_name: Faker::Lorem.sentence(word_count: 3),
                 project_description: Faker::Lorem.sentence(word_count: 10),
-                department_in_charge_of_the_elevators: Faker::Lorem.sentence(word_count: 2),
+                department_in_charge_of_the_elevators: department[Faker::Number.between(from: 0, to: 2)],
                 message: Faker::Lorem.sentence(word_count: 20),
                 date_of_the_contact: Faker::Date.between(from: 3.years.ago, to: Date.today)
             )
@@ -176,7 +172,7 @@ namespace :import do
         status = ["Active", "Inactive"]
         i = Address.count + 1
         users.each do
-            random_address = data_hash['addresses'][Faker::Number.between(from: 0, to: 499)]
+            random_address = data_hash['addresses'][Faker::Number.unique.between(from: 0, to: 499)]
             customer_addresses << Address.new(
                 id: i,
                 type_of_address: address_type[Faker::Number.between(from: 0, to: 3)],
@@ -243,8 +239,6 @@ namespace :import do
         i = Building.count + 1
         x = 0
         customers.each do
-            times = Faker::Number.between(from: 0, to: 5)
-            times.times do
                 buildings << Building.new(
                     id: i,
                     full_name_of_the_building_administrator: Faker::Name.name,
@@ -257,7 +251,6 @@ namespace :import do
                     customer_id: customers[x].id,
                 )
             i += 1
-            end
         x += 1
         end
         Building.import! buildings
@@ -293,7 +286,7 @@ namespace :import do
         batteries.each do
             column = column_type[Faker::Number.between(from: 0, to: 3)]
             floors = Faker::Number.between(from: 0, to: 60)
-            times = Faker::Number.between(from: 0, to: 5)
+            times = Faker::Number.between(from: 1, to: 5)
             times.times do
                 columns << Column.new(
                     id: i,
@@ -317,11 +310,11 @@ namespace :import do
         x = 0
         columns.each do
             date_of_commission = Faker::Date.between(from: 3.years.ago, to: Date.today)
-            times = Faker::Number.between(from: 0, to: 5)
+            times = Faker::Number.between(from: 1, to: 5)
             times.times do
                 elevators << Elevator.new(
                     id: i,
-                    Serial_number: Faker::Alphanumeric.alphanumeric(number: 10),
+                    Serial_number: Faker::Alphanumeric.alphanumeric(number: 12),
                     Model: elevator_model[Faker::Number.between(from: 0, to: 2)],
                     Type: columns[x].Type,
                     Status: "Online",
