@@ -30,9 +30,7 @@
         <td><%= adress.postal_code %></td>
         <td><%= adress.country %></td>
         <td><%= adress.notes %></td>
-        <td><%= link_to 'Show', adress %></td>
-        <td><%= link_to 'Edit', edit_adress_path(adress) %></td>
-        <td><%= link_to 'Destroy', adress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +38,3 @@
 
 <br>
 
-<%= link_to 'New Adress', new_adress_path %>

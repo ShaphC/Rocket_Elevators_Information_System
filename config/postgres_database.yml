@@ -5,7 +5,7 @@ postgres: &postgres
   host: localhost
   pool: 5
   username: postgres
-  password: password
+  password: ines2010
 
 development:
   <<: *postgres

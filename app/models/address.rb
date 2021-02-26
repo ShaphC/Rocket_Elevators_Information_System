@@ -1,4 +1,4 @@
 class Address < ApplicationRecord
-  has_one :building
-  has_one :customer
+  has_one :building, dependent: :destroy
+  has_one :customer, dependent: :destroy
 end
