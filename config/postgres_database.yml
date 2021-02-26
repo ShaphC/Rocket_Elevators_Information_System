@@ -1,12 +1,12 @@
 postgres: &postgres
   adapter: postgresql
   encoding: unicode
-  database: postgres
+  database: dwh_scharles
   host: localhost
   pool: 5
-  username: postgres
-  password: password
+  username: codeboxx
+  password: Codeboxx!
 
 development:
   <<: *postgres
-  database: postgres
+  database: dwh_scharles
