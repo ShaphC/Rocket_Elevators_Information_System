@@ -1,11 +1,3 @@
-SELECT COUNT( [*], [DISTINCT], ContactID) FROM fact_contacts GROUP BY DATE_TRUNC('month', created_at);
-
-SELECT COUNT( [*], [DISTINCT], QuoteId) FROM fact_quotes GROUP BY DATE_TRUNC('month', created_at);
-
-SELECT COUNT( [*], [DISTINCT] SerialNumber) FROM fact_elevators GROUP BY CustomerId, BuildingId;
-
-
-
 SELECT COUNT(DISTINCT contact_id) AS Requests_per_Month, DATE_TRUNC('month', created_at) AS Month_Created FROM fact_contacts GROUP BY DATE_TRUNC('month', created_at);
 
 SELECT COUNT(DISTINCT quote_id) AS Quotes_per_Month, DATE_TRUNC('month', created_at) AS Month_Created FROM fact_quotes GROUP BY DATE_TRUNC('month', created_at);
