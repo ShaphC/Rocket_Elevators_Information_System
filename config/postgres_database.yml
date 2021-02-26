@@ -1,7 +1,7 @@
 postgres: &postgres
   adapter: postgresql
   encoding: unicode
-  database: dwh_sc
+  database: dwh_scharles
   host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com
   pool: 5
   username: codeboxx
@@ -9,4 +9,4 @@ postgres: &postgres
 
 development:
   <<: *postgres
-  database: dwh_sc
+  database: dwh_scharles
