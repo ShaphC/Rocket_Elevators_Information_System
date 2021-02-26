@@ -29,7 +29,7 @@ namespace :update do
          end
 
          Quote.all.each do |quote|
-            psqlconn.exec_params("UPDATE dim_customers SET nb_elevator = #{quote.numElev} WHERE id = #{quote.id}")
+            psqlconn.exec_params("UPDATE dim_customers SET nb_elevators = #{quote.numElev} WHERE id = #{quote.id}")
          end
     
          Building.all.each do |building|
