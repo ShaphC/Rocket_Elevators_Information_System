@@ -1,6 +1,6 @@
 namespace :update do
       task seed_psql: :environment do
-        psqlconn = PG::Connection.open(:dbname => 'postgres')
+        psqlconn = PG::Connection.open(:dbname => 'dwh_scharles')
 
         Quote.all.each do |quote|
          psqlconn.exec_params("INSERT INTO fact_quotes VALUES (#{quote.id}, #{quote.id}, '2021-02-25 16:35:02', 'Placeholder', '#{quote.email}', #{quote.numElev}, '2021-02-25 16:35:02', '2021-02-25 16:35:02')")      
