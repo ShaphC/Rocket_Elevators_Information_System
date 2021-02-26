@@ -11,6 +11,11 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
 
+  config.navigation_static_label = "Visualization"
+  config.navigation_static_links = {
+    'Charts' => '/blazer'
+  }
+
   ## == CancanCan ==
   # config.authorize_with :cancancan
 
