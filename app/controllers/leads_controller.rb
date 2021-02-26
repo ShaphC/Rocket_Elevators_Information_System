@@ -1,16 +1,16 @@
 class LeadsController < ApplicationController
-  # def show
-  #   @lead = Lead.find(params[:id])
-  # end
+  def show
+    @lead = Lead.find(params[:id])
+  end
 
-  # def index
-  #   @leads = Lead.all
-  # end
+  def index
+    @leads = Lead.all
+  end
 
 
 
   def new
-    # @lead = Lead.new
+    @lead = Lead.new
     render 'pages/index.html.erb'
   end
 

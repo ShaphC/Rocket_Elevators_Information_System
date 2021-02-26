@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_02_24_195423) do
+=======
+ActiveRecord::Schema.define(version: 2021_02_25_184746) do
+>>>>>>> main
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -50,7 +54,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_195423) do
   create_table "batteries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "Type", limit: 100
     t.string "Status"
-    t.string "EmployeeId"
     t.date "Date_of_commissioning"
     t.date "Date_of_last_inspection"
     t.string "Certificate_of_Operations"
@@ -59,7 +62,9 @@ ActiveRecord::Schema.define(version: 2021_02_24_195423) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "building_id"
+    t.bigint "employee_id"
     t.index ["building_id"], name: "index_batteries_on_building_id"
+    t.index ["employee_id"], name: "index_batteries_on_employee_id"
   end
 
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -193,6 +198,10 @@ ActiveRecord::Schema.define(version: 2021_02_24_195423) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "batteries", "buildings"
+<<<<<<< HEAD
+=======
+  add_foreign_key "batteries", "employees"
+>>>>>>> main
   add_foreign_key "building_details", "buildings"
   add_foreign_key "buildings", "addresses"
   add_foreign_key "buildings", "customers"

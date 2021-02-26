@@ -1,5 +1,5 @@
 class Column < ApplicationRecord
-    belongs_to :batterie #,foreign_key: "battery_id"
+    belongs_to :batterie
     has_many :elevator, dependent: :destroy
 
 end

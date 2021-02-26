@@ -91,3 +91,5 @@ gem 'faker'
 #JSON for generating adresses
 gem 'json'
 
+#For formatting quote columns
+gem 'money'
