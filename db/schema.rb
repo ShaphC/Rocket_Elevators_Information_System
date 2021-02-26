@@ -63,6 +63,62 @@ ActiveRecord::Schema.define(version: 2021_02_25_184746) do
     t.index ["employee_id"], name: "index_batteries_on_employee_id"
   end
 
+  create_table "blazer_audits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "query_id"
+    t.text "statement"
+    t.string "data_source"
+    t.datetime "created_at"
+    t.index ["query_id"], name: "index_blazer_audits_on_query_id"
+    t.index ["user_id"], name: "index_blazer_audits_on_user_id"
+  end
+
+  create_table "blazer_checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "creator_id"
+    t.bigint "query_id"
+    t.string "state"
+    t.string "schedule"
+    t.text "emails"
+    t.text "slack_channels"
+    t.string "check_type"
+    t.text "message"
+    t.datetime "last_run_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
+    t.index ["query_id"], name: "index_blazer_checks_on_query_id"
+  end
+
+  create_table "blazer_dashboard_queries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "dashboard_id"
+    t.bigint "query_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
+    t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
+  end
+
+  create_table "blazer_dashboards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "creator_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
+  end
+
+  create_table "blazer_queries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "creator_id"
+    t.string "name"
+    t.text "description"
+    t.text "statement"
+    t.string "data_source"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
+  end
+
   create_table "building_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "information_key"
     t.string "value"
@@ -117,17 +173,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_184746) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
-  create_table "dim_customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "creation_date"
-    t.string "company_name"
-    t.text "main_contact_name"
-    t.string "main_contact_email"
-    t.integer "nb_elevators"
-    t.string "customer_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "Serial_number", limit: 100
     t.string "Model"
@@ -151,36 +196,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_184746) do
     t.string "email"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_employees_on_user_id"
-  end
-
-  create_table "fact_contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "contact_id"
-    t.date "creation_date"
-    t.string "company_name"
-    t.string "email"
-    t.string "project_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fact_elevators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "serial_number"
-    t.date "date_of_commissioning"
-    t.integer "building_id"
-    t.integer "customer_id"
-    t.string "building_city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "fact_quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "quote_id"
-    t.date "creation_date"
-    t.string "company_name"
-    t.string "email"
-    t.integer "nb_elevator"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
