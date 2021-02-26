@@ -93,3 +93,4 @@ gem 'json'
 
 #For formatting quote columns
 gem 'money'
+gem 'blazer'
