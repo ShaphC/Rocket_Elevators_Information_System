@@ -14,5 +14,7 @@ All user accounts and passwords from week 4 are still included and valid.
 
 The index.html.erb page now has a contact section that is connected to Leads table of the BackOffice, capable of attaching files that can also be accessed through the BackOffice.
 
+The tables that can display charts are Fact Quotes, Fact Elevators and Fact Contacts. They currently don't have data from the postgres server so they are all 0. An example of a working chart would be in the Leads table which can also use Charts and which does have data to display
+
 There's also an SQL query file that is included in the root of the app.
 
