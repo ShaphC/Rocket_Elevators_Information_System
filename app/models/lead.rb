@@ -1,6 +1,7 @@
 class Lead < ApplicationRecord
   has_one_attached :attached_file, dependent: :destroy
 end 
+
 # Attach an avatar to the user.
 # user.attached_file.attach(io: File.open("/path/to/face.jpg"), filename: "face.jpg", content_type: "image/jpg")
 
