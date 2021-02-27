@@ -38,7 +38,7 @@ class LeadsController < ApplicationController
     # @lead.attached_file.attach(params[:attached_file])
     attachment = params["attachment"]
     @lead.attached_file = attachment
-    @lead.save
+    @lead.save!
 
 
 
@@ -49,9 +49,9 @@ class LeadsController < ApplicationController
     
    
     if attachment == nil
-      puts "thank you"
+      puts "this is nil, tough luck"
       if not nil 
-          @lead.file = attachment.read
+          @lead.attachment = attachment.read
           @lead.attached_file = attachment.original_attached_file
       end
     end
