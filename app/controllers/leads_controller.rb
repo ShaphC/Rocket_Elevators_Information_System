@@ -48,13 +48,12 @@ class LeadsController < ApplicationController
 
     
    
-    if attachment == nil
-      puts "this is nil, tough luck"
-      if not nil 
-          @lead.file = attachment.read
+    if attachment != nil
+     
+          @lead.attachment = attachment.read
           @lead.attached_file = attachment.original_attached_file
       end
-    end
+    
 
     if @lead.save!
         
@@ -64,7 +63,9 @@ class LeadsController < ApplicationController
         
     end
   end
-  
+  def lead_params
+    params.required(:leads).permit!
+  end
   # def destroy
   #   @lead = Photo.find(params[:id])
   #   @lead.destroyy
