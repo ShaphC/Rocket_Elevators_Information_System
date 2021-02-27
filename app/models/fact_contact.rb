@@ -1,2 +1,3 @@
-class FactContact < PostgresRecord
+class FactContact < ApplicationRecord
+    include RailsAdminCharts
 end

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :addresses
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  mount Blazer::Engine, at: "blazer"
 
   get 'users/sign_in' => 'users#sign_in', as: :sign_in
   get 'users/sign_out' => 'users#sign_out', as: :sign_out

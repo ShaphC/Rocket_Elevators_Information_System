@@ -1,4 +1,5 @@
-class Lead < ApplicationRecord
+class Lead < ApplicationRecord 
+  include RailsAdminCharts 
   has_one_attached :attached_file
 
   # validates :attached_file, file_size: { less_than_or_equal_to: 10.megabytes },
