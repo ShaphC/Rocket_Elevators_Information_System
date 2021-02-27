@@ -12,3 +12,7 @@ The four required tables in PostgreSQL are created and use a rake task to receiv
 
 All user accounts and passwords from week 4 are still included and valid.
 
+The index.html.erb page now has a contact section that is connected to Leads table of the BackOffice, capable of attaching files that can also be accessed through the BackOffice.
+
+There's also an SQL query file that is included in the root of the app.
+
