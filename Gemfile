@@ -93,4 +93,5 @@ gem 'json'
 
 #For formatting quote columns
 gem 'money'
-gem 'blazer'
+
+gem 'rails_admin_charts'

@@ -11,11 +11,6 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
 
-  config.navigation_static_label = "Visualization"
-  config.navigation_static_links = {
-    'Charts' => '/blazer'
-  }
-
   ## == CancanCan ==
   # config.authorize_with :cancancan
 
@@ -41,7 +36,7 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
+    charts
     ## With an audit adapter, you can add:
     # history_index
     # history_show
